@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graciane Paulini | Agente de Destino & Prosperidade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-red': '#B91C1C', // Deep red (Tailwind red-700)
+            'brand-red-dark': '#7F1D1D', // red-900
+            'brand-gold': '#D4AF37',
+            'brand-black': '#050505',
+            'brand-gray': '#0F1115',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    :root {
+      --accent: #B91C1C;
+      --accent-glow: rgba(185, 28, 28, 0.25);
+      --accent-rgb: 185, 28, 28;
+      --bg: #050505;
+      --text: #FFFFFF;
+    }
+
+    .theme-red {
+      --accent: #B91C1C;
+      --accent-glow: rgba(185, 28, 28, 0.25);
+      --accent-rgb: 185, 28, 28;
+    }
+
+    .theme-gold {
+      --accent: #D4AF37;
+      --accent-glow: rgba(212, 175, 55, 0.25);
+      --accent-rgb: 212, 175, 55;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%);
+    }
+
+    .font-serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-sans {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .accent-text {
+      color: var(--accent);
+    }
+
+    .accent-bg {
+      background-color: var(--accent);
+    }
+
+    .accent-border {
+      border-color: var(--accent);
+    }
+
+    /* Sophisticated CTA */
+    .btn-premium {
+      background-color: var(--accent);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 1.25rem 3rem;
+      border-radius: 4px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-premium:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+      filter: brightness(1.2);
+    }
+
+    /* Card Style */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      transition: all 0.4s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .reveal.reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.02;
+      background-image: url('https://www.transparenttextures.com/patterns/pinstripe-dark.png');
+    }
+
+    /* Float Animation */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-float {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    /* Circle Image mask */
+    .circle-mask {
+      mask-image: radial-gradient(circle, black 60%, transparent 100%);
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div class="grain-overlay"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
