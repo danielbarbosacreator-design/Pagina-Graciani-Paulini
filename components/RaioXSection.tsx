@@ -4,54 +4,52 @@ import { CheckCircle2, ChevronRight } from 'lucide-react';
 
 const RaioXSection: React.FC = () => {
     return (
-        <section id={Section.RAIO_X} className="py-24 md:py-40 bg-brand-gray relative">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div className="reveal">
-                    <span className="accent-text text-sm font-bold uppercase tracking-[0.4em] mb-6 block font-sans">Análise Inicial</span>
-                    <h2 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-tight mb-8">
-                        RAIO X DA <br />
-                        <span className="accent-text">REALIDADE</span>
+        <section id={Section.RAIO_X} className="section-spacing relative bg-[#F6F6F6] text-[#202126]">
+            <div className="max-w-[1100px] mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center reveal">
+                
+                {/* Left Side */}
+                <div className="text-left">
+                    <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-[#CFAE6B] mb-8 block">Análise Inicial</span>
+                    <h2 className="mb-8 leading-[1.05]">
+                        Raio X da <br />
+                        <span className="italic text-[#CFAE6B]">Realidade</span>
                     </h2>
-                    <p className="font-sans text-gray-400 text-lg leading-relaxed mb-10">
+                    <p className="max-w-lg mb-14 text-[#202126]/60 text-[15px] leading-[1.8] font-light">
                         Um encontro exclusivo para uma análise profunda da sua situação atual. Receba instruções e direção claras sobre metas e objetivos coerentes com as suas prioridades para esta estação da vida.
                     </p>
 
-                    <ul className="space-y-4 mb-12">
+                    <ul className="space-y-5 mb-14">
                         {[
                             'Análise detalhada do momento atual',
                             'Instruções práticas para metas imediatas',
                             'Alinhamento com prioridades de vida',
                             'Direcionamento conforme sua disposição em agir'
                         ].map((item, i) => (
-                            <li key={i} className="flex items-center gap-4 text-gray-300 font-sans font-semibold">
-                                <CheckCircle2 size={18} className="accent-text" />
-                                <span>{item}</span>
+                            <li key={i} className="flex items-start gap-4">
+                                <CheckCircle2 size={18} className="text-[#CFAE6B] flex-shrink-0 mt-0.5" strokeWidth={2} />
+                                <span className="font-sans font-normal text-sm text-[#202126]/70">{item}</span>
                             </li>
                         ))}
                     </ul>
 
-                    <button className="btn-premium group">
-                        APLICAR PARA ANÁLISE <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                    <button className="btn-premium">
+                        APLICAR PARA ANÁLISE <ChevronRight size={16} />
                     </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 reveal">
-                    <div className="mt-12 glass-card p-8 flex flex-col justify-end aspect-square border-accent-glow border-b-2">
-                        <span className="text-4xl font-display font-black accent-text mb-4">01</span>
-                        <h4 className="font-sans font-bold uppercase tracking-widest text-sm">Clareza Absoluta</h4>
-                    </div>
-                    <div className="glass-card p-8 flex flex-col justify-end aspect-square border-accent-glow border-t-2">
-                        <span className="text-4xl font-display font-black accent-text mb-4">02</span>
-                        <h4 className="font-sans font-bold uppercase tracking-widest text-sm">Ação Direcionada</h4>
-                    </div>
-                    <div className="glass-card p-8 flex flex-col justify-end aspect-square border-accent-glow border-b-2">
-                        <span className="text-4xl font-display font-black accent-text mb-4">03</span>
-                        <h4 className="font-sans font-bold uppercase tracking-widest text-sm">Resultados Reais</h4>
-                    </div>
-                    <div className="mt-12 glass-card p-8 flex flex-col justify-end aspect-square border-accent-glow border-t-2">
-                        <span className="text-4xl font-display font-black accent-text mb-4">04</span>
-                        <h4 className="font-sans font-bold uppercase tracking-widest text-sm">Foco no Essencial</h4>
-                    </div>
+                {/* Right Side - Staggered Cards */}
+                <div className="grid grid-cols-2 gap-5">
+                    {[
+                        { num: '01', title: 'Clareza Absoluta' },
+                        { num: '02', title: 'Ação Direcionada', mt: 'mt-10' },
+                        { num: '03', title: 'Resultados Reais' },
+                        { num: '04', title: 'Foco no Essencial', mt: 'mt-10' }
+                    ].map((card, i) => (
+                        <div key={i} className={`bg-white border border-[#202126]/6 p-8 flex flex-col justify-between aspect-square group hover:border-[#CFAE6B]/40 transition-all duration-500 ${card.mt || ''}`}>
+                            <span className="text-5xl font-serif font-light text-[#202126]/8 group-hover:text-[#CFAE6B] transition-colors duration-500">{card.num}</span>
+                            <h4 className="text-[#202126] text-[11px] tracking-[0.12em]">{card.title}</h4>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

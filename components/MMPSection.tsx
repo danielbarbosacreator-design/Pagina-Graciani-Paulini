@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from '../types';
-import { PlayCircle, CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { PlayCircle, CheckCircle, Star } from 'lucide-react';
 
 const MMPSection: React.FC = () => {
     const modules = [
@@ -11,89 +11,65 @@ const MMPSection: React.FC = () => {
     ];
 
     return (
-        <section id={Section.MMP} className="py-24 md:py-40 bg-black relative">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                    <div className="md:w-2/3">
-                        <span className="accent-text text-sm font-bold uppercase tracking-[0.4em] mb-4 block font-sans">Porta de Entrada</span>
-                        <h2 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-6">
-                            Método <br />
-                            <span className="accent-text">Mentalidade Próspera</span>
-                        </h2>
-                        <p className="font-sans text-gray-400 text-lg max-w-xl leading-relaxed">
-                            A forma de pensar, sentir e agir que cria abundância em todas as áreas da vida. Um treinamento gravado completo para você dar o primeiro passo.
-                        </p>
-                    </div>
-                    <div className="md:w-1/3 flex flex-col items-end mt-10 md:mt-0">
-                        <button className="btn-premium group py-4 px-10 text-[10px]">
-                            QUERO ME INSCREVER <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                    </div>
+        <section id={Section.MMP} className="section-spacing relative bg-[#202126]">
+            
+            <div className="max-w-[1100px] mx-auto px-8 reveal">
+                <div className="max-w-2xl mx-auto text-center mb-20">
+                    <span className="text-[#CFAE6B] text-[10px] font-semibold uppercase tracking-[0.3em] mb-8 block">Treinamento Base</span>
+                    <h2 className="mb-8">Método <span className="italic text-[#CFAE6B]">Mentalidade Próspera</span></h2>
+                    <p className="text-white/40 text-[15px] leading-[1.8] font-light">A forma de pensar, sentir e agir que cria abundância em todas as áreas da vida. Um treinamento gravado completo para você dar o primeiro passo.</p>
                 </div>
 
-                {/* Module Cards Grid from prototype Image 1 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24 reveal">
+                {/* Module Grid */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
                     {modules.map((mod, i) => (
-                        <div key={i} className="relative aspect-[3/4] group overflow-hidden border-b-2 border-transparent hover:border-accent-glow transition-all rounded-lg">
-                            <img
-                                src={mod.img}
-                                alt={mod.title}
-                                className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-1000 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                            <div className="absolute inset-x-0 bottom-0 p-8">
-                                <h4 className="font-display text-3xl font-black uppercase tracking-tighter leading-none mb-2 tracking-tight group-hover:accent-text transition-all">
-                                    {mod.title.split(' ')[0]} <br />
-                                    <span className="font-serif lowercase italic text-xl font-normal opacity-80">{mod.title.split(' ').slice(1).join(' ')}</span>
-                                </h4>
-                                <div className="w-12 h-[2px] accent-bg mb-4" />
-                                <p className="text-[7px] font-bold text-gray-500 uppercase tracking-widest">{mod.subtitle}</p>
+                        <div key={i} className="relative group overflow-hidden border border-white/5 hover:border-[#CFAE6B]/30 transition-all duration-500 aspect-[4/5]">
+                            <img src={mod.img} alt={mod.title} className="w-full h-full object-cover grayscale opacity-25 group-hover:grayscale-0 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#202126] via-[#202126]/30 to-transparent" />
+                            <div className="absolute inset-x-0 bottom-0 p-8 text-left">
+                                <h4 className="text-[11px] tracking-[0.12em] text-[#F6F6F6] mb-2">{mod.title}</h4>
+                                <div className="w-8 h-[1px] bg-[#CFAE6B] mb-3 group-hover:w-16 transition-all duration-500" />
+                                <p className="text-[8px] font-medium text-white/30 tracking-[0.2em] uppercase">{mod.subtitle}</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Benefits & Price Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center reveal">
-                    <div className="space-y-12">
-                        <div className="glass-card p-10 border-l-4 accent-border">
-                            <h4 className="font-sans font-extrabold text-xl uppercase tracking-tighter mb-8 flex items-center gap-2">
-                                <PlayCircle size={24} className="accent-text" /> O que você aprende no MMP:
-                            </h4>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                                {[
-                                    '🌱 Mente e Corpo equilibrados',
-                                    '💡 Mentalidade de Possibilidades',
-                                    '🙏 Poder da Gratidão real',
-                                    '💰 Administração de Recursos',
-                                    '❤️ Relacionamentos Saudáveis',
-                                    '✨ Propósito e Legado',
-                                    '🙌 Abundância e Transbordo'
-                                ].map((benefit, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-gray-400 font-sans text-sm font-semibold tracking-tight h-[20px] overflow-hidden">
-                                        <CheckCircle size={16} className="accent-text flex-shrink-0" />
-                                        <span>{benefit}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                {/* Benefits */}
+                <div className="premium-card-dark max-w-3xl mx-auto p-12 mb-20 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-[2px] h-full bg-[#CFAE6B]/30" />
+                    <div className="flex items-center gap-4 mb-10">
+                        <PlayCircle className="text-[#CFAE6B]" size={20} strokeWidth={1.5} />
+                        <h4 className="text-[11px] tracking-[0.12em] text-[#F6F6F6]">O que você aprende no MMP:</h4>
                     </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-5">
+                        {[
+                            'Mente e Corpo equilibrados',
+                            'Mentalidade de Possibilidades',
+                            'Poder da Gratidão real',
+                            'Administração de Recursos',
+                            'Relacionamentos Saudáveis',
+                            'Propósito e Legado',
+                            'Abundância e Transbordo'
+                        ].map((benefit, i) => (
+                            <div key={i} className="flex items-center gap-3.5 text-white/50 text-[13px] font-light">
+                                <CheckCircle size={16} className="text-[#CFAE6B] flex-shrink-0" strokeWidth={1.5} />
+                                <span>{benefit}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
-                    <div className="text-center lg:text-right flex flex-col items-center lg:items-end">
-                        <span className="text-gray-500 text-xs font-bold tracking-[0.4em] uppercase mb-4 block">Oferta de Entrada - Leads Frios</span>
-                        <div className="relative mb-8">
-                            <div className="absolute -top-6 -right-6 w-20 h-20 bg-accent-glow blur-[40px] rounded-full" />
-                            <h3 className="font-display font-black text-9xl md:text-[11rem] leading-none accent-text tracking-tighter relative z-10">
-                                R$47
-                            </h3>
-                            <span className="text-gray-500 font-sans text-xs uppercase tracking-widest font-bold">acesso imediato • 20 aulas gravadas</span>
-                        </div>
-                        <button className="btn-premium group py-6 px-20 text-lg w-full md:w-auto mt-4">
-                            INICIAR MINHA MUDANÇA <ArrowRight className="ml-2 group-hover:translate-x-1" />
-                        </button>
-                        <div className="mt-8 flex items-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest opacity-60">
-                            <Star size={12} fill="currentColor" /> MENTORIA EM GRUPO OU INDIVIDUAL
-                        </div>
+                {/* Price Block */}
+                <div className="flex flex-col items-center gap-8">
+                    <div className="flex items-baseline gap-3">
+                        <span className="text-white/30 text-lg font-serif">R$</span>
+                        <span className="text-7xl font-serif font-medium text-[#CFAE6B] leading-none">47</span>
+                        <span className="text-white/30 text-[10px] font-semibold tracking-[0.15em] uppercase">Única Vez</span>
+                    </div>
+                    <button className="btn-premium px-16">QUERO MEU ACESSO AGORA</button>
+                    <div className="flex items-center gap-2.5 text-[9px] font-semibold uppercase tracking-[0.15em] text-white/25">
+                        <Star size={12} fill="currentColor" className="text-[#CFAE6B]" /> 20 aulas gravadas · Acesso Vitalício
                     </div>
                 </div>
             </div>

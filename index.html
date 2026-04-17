@@ -1,195 +1,382 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graciane Paulini | Agente de Destino & Prosperidade</title>
+  <meta name="description" content="Graciane Paulini, Mentora de Inteligência Emocional e Financeira. Transformação pessoal com clareza, consciência e direção prática." />
+  <title>Graciane Paulini | Mentora de Inteligência Emocional e Financeira</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'brand-red': '#B91C1C', // Deep red (Tailwind red-700)
-            'brand-red-dark': '#7F1D1D', // red-900
-            'brand-gold': '#D4AF37',
-            'brand-black': '#050505',
-            'brand-gray': '#0F1115',
+            'base-950': '#0A0A0A',
+            'base-900': '#111111',
+            'base-850': '#161616',
+            'base-800': '#1C1C1C',
+            'base-700': '#252525',
+            'gold': {
+              dark:    '#937841',
+              DEFAULT: '#C5A059',
+              light:   '#E0C882',
+              pale:    '#F0E4C4',
+            },
           },
           fontFamily: {
-            serif: ['"Cormorant Garamond"', 'serif'],
-            display: ['"Playfair Display"', 'serif'],
-            sans: ['"Montserrat"', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:  ['"Poppins"', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: { 'container': '1120px' },
+          animation: {
+            'x-slider': 'x-slider 40s linear infinite',
+          },
+          keyframes: {
+            'x-slider': {
+              '0%':   { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(calc(-50% - 1.25rem))' },
+            },
           },
         },
       },
     }
   </script>
   <style>
-    :root {
-      --accent: #B91C1C;
-      --accent-glow: rgba(185, 28, 28, 0.25);
-      --accent-rgb: 185, 28, 28;
-      --bg: #050505;
-      --text: #FFFFFF;
-    }
-
-    .theme-red {
-      --accent: #B91C1C;
-      --accent-glow: rgba(185, 28, 28, 0.25);
-      --accent-rgb: 185, 28, 28;
-    }
-
-    .theme-gold {
-      --accent: #D4AF37;
-      --accent-glow: rgba(212, 175, 55, 0.25);
-      --accent-rgb: 212, 175, 55;
-    }
-
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
+      background: #0A0A0A;
+      color: #FFFFFF;
+      font-family: 'Poppins', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
-      background-image:
-        radial-gradient(circle at 0% 0%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%);
     }
 
-    .font-serif {
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .font-display {
-      font-family: 'Playfair Display', serif;
-    }
-
-    .font-sans {
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .accent-text {
-      color: var(--accent);
-    }
-
-    .accent-bg {
-      background-color: var(--accent);
-    }
-
-    .accent-border {
-      border-color: var(--accent);
-    }
-
-    /* Sophisticated CTA */
-    .btn-premium {
-      background-color: var(--accent);
+    ::selection {
+      background: rgba(197, 160, 89, 0.3);
       color: white;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 1.25rem 3rem;
-      border-radius: 4px;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .btn-premium:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px var(--accent-glow);
-      filter: brightness(1.2);
+    .gold-text {
+      background: linear-gradient(135deg, #C5A059 0%, #E8D5A3 40%, #C5A059 60%, #937841 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    /* Card Style */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      transition: all 0.4s ease;
+    .gold-border {
+      border-image: linear-gradient(135deg, #937841, #E0C882, #C5A059) 1;
     }
 
-    .glass-card:hover {
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.04);
+    /* ── ShinyButton ───────────────────────────────────────── */
+    @property --gradient-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @property --gradient-angle-offset {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @property --gradient-percent {
+      syntax: "<percentage>";
+      initial-value: 5%;
+      inherits: false;
+    }
+    @property --gradient-shine {
+      syntax: "<color>";
+      initial-value: white;
+      inherits: false;
     }
 
-    /* Reveal Animation */
+    .shiny-cta {
+      --shiny-cta-bg: #080602;
+      --shiny-cta-bg-subtle: #1a1408;
+      --shiny-cta-fg: #ffffff;
+      --shiny-cta-highlight: #C5A059;
+      --shiny-cta-highlight-subtle: #E0C882;
+      --animation: gradient-angle linear infinite;
+      --duration: 3s;
+      --shadow-size: 2px;
+      --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+      --padding-x: 2.5rem;
+      --padding-y: 1rem;
+      --font-size: 0.8125rem;
+
+      isolation: isolate;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      outline-offset: 4px;
+      padding: var(--padding-y) var(--padding-x);
+      font-family: "Poppins", sans-serif;
+      font-size: var(--font-size);
+      line-height: 1.2;
+      font-weight: 600;
+      border: 1px solid transparent;
+      border-radius: 360px;
+      color: var(--shiny-cta-fg);
+      background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
+        conic-gradient(
+          from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+          transparent,
+          var(--shiny-cta-highlight) var(--gradient-percent),
+          var(--gradient-shine) calc(var(--gradient-percent) * 2),
+          var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+          transparent calc(var(--gradient-percent) * 4)
+        ) border-box;
+      box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+      transition: var(--transition);
+      transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+    }
+
+    .shiny-cta::before,
+    .shiny-cta::after,
+    .shiny-cta span::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      inset-inline-start: 50%;
+      inset-block-start: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+    }
+
+    .shiny-cta:active { translate: 0 1px; }
+
+    .shiny-cta::before {
+      --size: calc(100% - var(--shadow-size) * 3);
+      --position: 2px;
+      --space: calc(var(--position) * 2);
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(
+        circle at var(--position) var(--position),
+        white calc(var(--position) / 4),
+        transparent 0
+      ) padding-box;
+      background-size: var(--space) var(--space);
+      background-repeat: space;
+      mask-image: conic-gradient(
+        from calc(var(--gradient-angle) + 45deg),
+        black,
+        transparent 10% 90%,
+        black
+      );
+      border-radius: inherit;
+      opacity: 0.4;
+      z-index: -1;
+    }
+
+    .shiny-cta::after {
+      --animation: shimmer linear infinite;
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(-50deg, transparent, var(--shiny-cta-highlight), transparent);
+      mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+      opacity: 0.6;
+    }
+
+    .shiny-cta span { z-index: 1; }
+
+    .shiny-cta span::before {
+      --size: calc(100% + 1rem);
+      width: var(--size);
+      height: var(--size);
+      box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight);
+      opacity: 0;
+      transition: opacity var(--transition);
+      animation: calc(var(--duration) * 1.5) breathe linear infinite;
+    }
+
+    .shiny-cta,
+    .shiny-cta::before,
+    .shiny-cta::after {
+      animation: var(--animation) var(--duration),
+        var(--animation) calc(var(--duration) / 0.4) reverse paused;
+      animation-composition: add;
+    }
+
+    .shiny-cta:is(:hover, :focus-visible) {
+      --gradient-percent: 20%;
+      --gradient-angle-offset: 95deg;
+      --gradient-shine: var(--shiny-cta-highlight-subtle);
+    }
+
+    .shiny-cta:is(:hover, :focus-visible),
+    .shiny-cta:is(:hover, :focus-visible)::before,
+    .shiny-cta:is(:hover, :focus-visible)::after {
+      animation-play-state: running;
+    }
+
+    .shiny-cta:is(:hover, :focus-visible) span::before { opacity: 1; }
+
+    @keyframes gradient-angle { to { --gradient-angle: 360deg; } }
+    @keyframes shimmer { to { rotate: 360deg; } }
+    @keyframes breathe {
+      from, to { scale: 1; }
+      50% { scale: 1.2; }
+    }
+
+    /* Section backgrounds */
+    .bg-warm     { background: #100E0B; }
+    .bg-cool     { background: #0C0B10; }
+    .bg-deep     { background: #0A0A0A; }
+    .bg-elevated { background: #131210; }
+
+    /* Ambient light orbs */
+    .glow-gold {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+    .glow-warm {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(180,120,60,0.07) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+
+    /* Light beam */
+    .light-beam {
+      position: absolute;
+      width: 200px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(197,160,89,0.04) 50%, transparent 100%);
+      transform: rotate(-15deg) translateX(-50%);
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(197,160,89,0.20) 50%, transparent 100%);
+    }
+
+    /* Mesh backgrounds */
+    .mesh-warm {
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(197,160,89,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(180,120,60,0.04) 0%, transparent 50%),
+        #100E0B;
+    }
+    .mesh-cool {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(197,160,89,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(147,120,65,0.03) 0%, transparent 50%),
+        #0C0B10;
+    }
+
+    /* ── Hero Aurora ──────────────────────────────────────────── */
+    /* Animate only transform → GPU compositing, sem pixelação    */
+    @keyframes aurora-drift-1 {
+      0%,100% { transform: translate(0%,    0%)   scale(1);    }
+      25%     { transform: translate(5%,   -7%)   scale(1.08); }
+      55%     { transform: translate(-4%,   5%)   scale(0.95); }
+      80%     { transform: translate(2%,   -3%)   scale(1.04); }
+    }
+    @keyframes aurora-drift-2 {
+      0%,100% { transform: translate(0%,    0%)   scale(1);    }
+      35%     { transform: translate(-6%,   4%)   scale(1.10); }
+      70%     { transform: translate(4%,   -4%)   scale(0.93); }
+    }
+    @keyframes aurora-drift-3 {
+      0%,100% { transform: translate(0%,   0%)   scale(1);    }
+      50%     { transform: translate(3%,   6%)   scale(1.13); }
+    }
+    @keyframes aurora-pulse {
+      0%,100% { opacity: .22; }
+      50%     { opacity: .40; }
+    }
+
+    /* ── Hero entrance animations ───────────────────────────── */
+    @keyframes hero-fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .hero-enter {
+      opacity: 0;
+      animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-aurora-1 {
+      position: absolute;
+      width: 1100px; height: 1100px;
+      background: radial-gradient(circle at center,
+        rgba(197,160,89,0.60) 0%,
+        rgba(197,160,89,0.22) 30%,
+        rgba(197,160,89,0.06) 55%,
+        transparent 72%);
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      animation: aurora-drift-1 24s ease-in-out infinite;
+    }
+    .hero-aurora-2 {
+      position: absolute;
+      width: 900px; height: 900px;
+      background: radial-gradient(circle at center,
+        rgba(224,200,130,0.55) 0%,
+        rgba(147,120,65,0.18) 35%,
+        rgba(147,120,65,0.04) 58%,
+        transparent 72%);
+      border-radius: 50%;
+      filter: blur(150px);
+      pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      animation: aurora-drift-2 30s ease-in-out infinite;
+    }
+    .hero-aurora-3 {
+      position: absolute;
+      width: 650px; height: 650px;
+      background: radial-gradient(circle at center,
+        rgba(240,228,196,0.50) 0%,
+        rgba(197,160,89,0.14) 40%,
+        transparent 68%);
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      animation: aurora-drift-3 20s ease-in-out infinite;
+    }
+    .hero-aurora-sweep {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 65% at 62% 38%, rgba(197,160,89,0.14) 0%, transparent 62%),
+        radial-gradient(ellipse 55% 85% at 18% 72%, rgba(147,120,65,0.10) 0%, transparent 62%);
+      pointer-events: none;
+      animation: aurora-pulse 14s ease-in-out infinite;
+    }
+
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    .reveal.reveal-visible {
+    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
-    .gold-gradient-text {
-      background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .grain-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.02;
-      background-image: url('https://www.transparenttextures.com/patterns/pinstripe-dark.png');
-    }
-
-    /* Float Animation */
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .animate-float {
-      animation: float 5s ease-in-out infinite;
-    }
-
-    /* Circle Image mask */
-    .circle-mask {
-      mask-image: radial-gradient(circle, black 60%, transparent 100%);
-    }
   </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
-  }
-}
-</script>
 </head>
 
 <body>
   <div id="root"></div>
-  <div class="grain-overlay"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
 

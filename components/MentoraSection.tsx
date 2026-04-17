@@ -1,81 +1,58 @@
 import React from 'react';
 import { Section } from '../types';
-import { Award, BookOpen, Target, Verified, Quote, TreeDeciduous } from 'lucide-react';
+import { Award, BookOpen, Target, TreeDeciduous } from 'lucide-react';
 
 const MentoraSection: React.FC = () => {
     return (
-        <section id={Section.ABOUT} className="py-24 md:py-40 bg-brand-gray relative overflow-hidden">
-            {/* Decorative Tree Icon in background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-                <TreeDeciduous size={800} />
-            </div>
+        <section id={Section.ABOUT} className="section-spacing relative bg-[#202126]">
+            <div className="max-w-[1100px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center reveal">
+                
+                {/* Image */}
+                <div className="relative">
+                    <div className="absolute -inset-12 bg-[#CFAE6B]/8 blur-[80px] rounded-full pointer-events-none z-0" />
+                    <div className="relative z-10 overflow-hidden border border-white/5 aspect-[3/4] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
+                        <img
+                            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                            alt="Graciane Paulini"
+                            className="w-full h-full object-cover grayscale-[0.15] brightness-[0.85] contrast-[1.05]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#202126] via-transparent to-transparent" />
+                    </div>
+                </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                    <div className="reveal">
-                        <div className="relative group max-w-md mx-auto lg:mx-0">
-                            {/* Frame inspired by new branding */}
-                            <div className="absolute -inset-4 border border-accent-glow rounded-3xl -z-10 animate-pulse" />
-                            <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
-                                <img
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-                                    alt="Graciane Paulini"
-                                    className="w-full h-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-1000"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                            </div>
-
-                            {/* Stats Card Overlay */}
-                            <div className="absolute -bottom-10 -right-10 glass-card p-10 border-l-4 accent-border shadow-2xl animate-float">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-white/5 rounded-full accent-text">
-                                        <Verified size={24} />
-                                    </div>
-                                    <div>
-                                        <div className="text-4xl font-display font-black accent-text">+10k</div>
-                                        <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Atendimentos Reais</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                {/* Bio */}
+                <div className="text-left">
+                    <span className="text-[#CFAE6B] text-[10px] font-semibold uppercase tracking-[0.3em] mb-8 block">Propósito & Destino</span>
+                    <h2 className="mb-10 leading-[1.05]">
+                        Conheça sua Mentora<br />
+                        <span className="italic text-[#CFAE6B]">Graciane Paulini</span>
+                    </h2>
+                    
+                    <div className="space-y-6 mb-14">
+                        <p className="text-[15px] font-normal text-white/80 leading-[1.8] opacity-100">Mentora de Inteligência Emocional e Financeira.</p>
+                        <p className="text-[15px] text-white/50 font-light leading-[1.8] opacity-100">
+                            Minha razão de viver é amar a Deus sobre todas as coisas, a mim mesma e ao meu próximo. Viver o melhor da vida aqui e agora, ensinando a transformação de mentalidade com pequenas ações colocadas em prática todos os dias.
+                        </p>
+                        <blockquote className="border-l-[2px] border-[#CFAE6B]/40 pl-8 italic font-serif text-xl text-white/60 py-2 leading-relaxed">
+                            "A verdadeira prosperidade financeira é consequência de seu autoconhecimento, da sua cura interior e da forma como se posiciona na vida."
+                        </blockquote>
+                        <p className="text-[15px] text-white/50 font-light leading-[1.8] opacity-100">
+                            Com mais de 22 anos de experiência comercial, desenvolvi uma escuta ativa e soluções personalizadas, capacitando pessoas para melhorar seu estilo de vida e, principalmente, ser feliz no caminho.
+                        </p>
                     </div>
 
-                    <div className="reveal">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-12 h-[1px] accent-bg" />
-                            <h4 className="accent-text text-sm font-bold uppercase tracking-[0.4em]">Propósito & Destino</h4>
-                        </div>
-
-                        <h2 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none mb-10">
-                            Graciane <br />
-                            <span className="accent-text">Paulini</span>
-                        </h2>
-
-                        <div className="space-y-8 font-sans text-gray-400 text-base leading-relaxed mb-12">
-                            <p>
-                                <span className="text-white font-bold">Mentora de Inteligência Emocional e Financeira.</span> Minha razão de viver é amar a Deus sobre todas as coisas, a mim mesma e ao meu próximo. Viver o melhor da vida aqui e agora, ensinando a transformação de mentalidade com pequenas ações colocadas em prática todos os dias.
-                            </p>
-                            <p className="border-l-2 accent-border pl-6 italic font-serif text-xl">
-                                "A verdadeira prosperidade financeira é consequência de seu autoconhecimento, da sua cura interior e da forma como se posiciona na vida."
-                            </p>
-                            <p>
-                                Com mais de <span className="text-white font-bold">22 anos de experiência comercial</span>, desenvolvi uma escuta ativa e soluções personalizadas, capacitando pessoas para melhorar seu estilo de vida e, principalmente, ser feliz no caminho.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {[
-                                { icon: <Award className="accent-text" size={18} />, title: '+22 Anos Varejo & Indústria' },
-                                { icon: <BookOpen className="accent-text" size={18} />, title: 'Coach Ikigai - Propósito' },
-                                { icon: <Target className="accent-text" size={18} />, title: 'Analista de Perfil Comportamental' },
-                                { icon: <TreeDeciduous className="accent-text" size={18} />, title: 'Finanças Comportamentais' },
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-4 p-5 glass-card">
-                                    {item.icon}
-                                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-300">{item.title}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        {[
+                            { icon: <Award size={18} strokeWidth={1.5} />, title: '+22 Anos Varejo' },
+                            { icon: <BookOpen size={18} strokeWidth={1.5} />, title: 'Coach Ikigai' },
+                            { icon: <Target size={18} strokeWidth={1.5} />, title: 'Analista Perfil' },
+                            { icon: <TreeDeciduous size={18} strokeWidth={1.5} />, title: 'Finanças Comp.' },
+                        ].map((item, i) => (
+                            <div key={i} className="flex items-center gap-3.5 p-5 bg-white/[0.03] border border-white/5 hover:border-[#CFAE6B]/30 transition-colors duration-500">
+                                <span className="text-[#CFAE6B]">{item.icon}</span>
+                                <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#F6F6F6]">{item.title}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

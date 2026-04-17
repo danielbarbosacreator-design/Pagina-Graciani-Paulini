@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Theme = 'red' | 'gold';
+type Theme = 'blue' | 'gold';
 
 interface ThemeContextType {
     theme: Theme;
@@ -10,16 +10,16 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>('red');
-    const themeClass = theme === 'red' ? 'theme-red' : 'theme-gold';
+    const [theme, setTheme] = useState<Theme>('blue');
+    const themeClass = theme === 'blue' ? 'theme-blue' : 'theme-gold';
 
     const toggleTheme = () => {
-        setTheme((prev) => (prev === 'red' ? 'gold' : 'red'));
+        setTheme((prev) => (prev === 'blue' ? 'gold' : 'blue'));
     };
 
     useEffect(() => {
-        document.documentElement.classList.remove('theme-red', 'theme-gold');
-        document.body.classList.remove('theme-red', 'theme-gold');
+        document.documentElement.classList.remove('theme-blue', 'theme-gold');
+        document.body.classList.remove('theme-blue', 'theme-gold');
         document.documentElement.classList.add(themeClass);
         document.body.classList.add(themeClass);
     }, [themeClass]);

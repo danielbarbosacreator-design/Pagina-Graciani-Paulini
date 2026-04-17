@@ -1,49 +1,57 @@
 import React from 'react';
 import { Section } from '../types';
-import { Instagram, Mail, MessageSquare, ShieldCheck } from 'lucide-react';
+import { Instagram, Mail, MessageSquare } from 'lucide-react';
 
 const MainFooter: React.FC = () => {
     return (
-        <footer className="bg-black py-20 border-t border-white/5 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-                    <div className="md:col-span-2">
-                        <h2 className="font-header text-3xl tracking-tighter accent-text mb-6">GRACIANE PAULINI</h2>
-                        <p className="text-gray-500 text-sm max-w-sm leading-relaxed mb-8">
-                            Transformação de mentalidade, inteligência emocional e finanças comportamentais para mulheres que buscam uma vida plena e abundante.
-                        </p>
-                        <div className="flex gap-6">
-                            <a href="#" className="text-gray-500 hover:accent-text transition-colors"><Instagram size={20} /></a>
-                            <a href="#" className="text-gray-500 hover:accent-text transition-colors"><Mail size={20} /></a>
-                            <a href="#" className="text-gray-500 hover:accent-text transition-colors"><MessageSquare size={20} /></a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 className="font-display font-bold uppercase tracking-widest text-xs mb-8">Navegação</h4>
-                        <ul className="space-y-4 text-xs uppercase tracking-[0.2em] text-gray-600">
-                            <li><a href={`#${Section.HERO}`} className="hover:text-white transition-colors">Início</a></li>
-                            <li><a href={`#${Section.RAIO_X}`} className="hover:text-white transition-colors">Raio X</a></li>
-                            <li><a href={`#${Section.MMP}`} className="hover:text-white transition-colors">Mentoria MMP</a></li>
-                            <li><a href={`#${Section.ABOUT}`} className="hover:text-white transition-colors">A Mentora</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-display font-bold uppercase tracking-widest text-xs mb-8">Pagamento Seguro</h4>
-                        <div className="bg-white/[0.03] p-6 border border-white/5">
-                            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-4 font-bold">Chave Pix CNPJ</p>
-                            <code className="text-[10px] accent-text font-bold block mb-4">58.982.139/0001-168</code>
-                            <div className="flex items-center gap-2 text-[8px] text-gray-600 uppercase tracking-widest border-t border-white/5 pt-4">
-                                <ShieldCheck size={12} /> Nubank - Graciane Paulini
-                            </div>
-                        </div>
+        <footer className="pt-24 pb-16 border-t border-white/5 bg-[#18191D] text-[#F6F6F6]">
+            <div className="max-w-[1100px] mx-auto px-8">
+                
+                {/* Top */}
+                <div className="flex flex-col items-center gap-8 mb-20">
+                    <span className="font-serif font-semibold uppercase tracking-[0.25em] text-xl text-[#F6F6F6]">Paulini</span>
+                    <p className="max-w-md text-center text-white/35 text-[13px] leading-[1.8] font-light">
+                        Transformação de mentalidade, inteligência emocional e finanças comportamentais para mulheres que buscam uma vida plena e abundante.
+                    </p>
+                    <div className="flex gap-8">
+                        {[Instagram, Mail, MessageSquare].map((Icon, idx) => (
+                            <a key={idx} href="#" className="text-white/15 hover:text-[#CFAE6B] transition-colors duration-500">
+                                <Icon size={18} strokeWidth={1.5} />
+                            </a>
+                        ))}
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-8 text-[10px] uppercase tracking-[0.3em] text-gray-700">
-                    <p>© 2026 GRACIANE PAULINI. TODOS OS DIREITOS RESERVADOS.</p>
-                    <p>DESIGN PREMIUM POR ANTIGRAVITY AI</p>
+                {/* Links Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-left border-y border-white/5 py-14 mb-14">
+                     <div>
+                        <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-6">Navegação</h4>
+                        <ul className="space-y-4 text-[11px] font-normal text-white/50">
+                            <li><a href={`#${Section.HERO}`} className="hover:text-[#CFAE6B] transition-colors duration-500">Início</a></li>
+                            <li><a href={`#${Section.MMP}`} className="hover:text-[#CFAE6B] transition-colors duration-500">Mentoria MMP</a></li>
+                            <li><a href={`#${Section.ABOUT}`} className="hover:text-[#CFAE6B] transition-colors duration-500">A Mentora</a></li>
+                        </ul>
+                     </div>
+                     <div>
+                        <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-6">Suporte</h4>
+                        <ul className="space-y-4 text-[11px] font-normal text-white/50">
+                            <li><a href="#" className="hover:text-[#CFAE6B] transition-colors duration-500">WhatsApp</a></li>
+                            <li><a href="#" className="hover:text-[#CFAE6B] transition-colors duration-500">Email</a></li>
+                        </ul>
+                     </div>
+                     <div className="col-span-2 flex flex-col items-end text-right">
+                        <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-6">CNPJ</h4>
+                        <code className="text-[11px] font-normal text-white/35 select-all bg-white/[0.03] px-5 py-2.5 border border-white/5">58.982.139/0001-168</code>
+                     </div>
+                </div>
+
+                {/* Bottom */}
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] font-medium uppercase tracking-[0.15em] text-white/15">
+                    <p className="opacity-100">© 2026 GRACIANE PAULINI. TODOS OS DIREITOS RESERVADOS.</p>
+                    <div className="flex gap-8">
+                        <a href="#" className="hover:text-white/40 transition-colors">Termos de Uso</a>
+                        <a href="#" className="hover:text-white/40 transition-colors">Privacidade</a>
+                    </div>
                 </div>
             </div>
         </footer>
