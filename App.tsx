@@ -304,7 +304,7 @@ const RaioX = () => (
           <div className="lg:col-span-3">
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/25 mb-1">Graciane Paulini</p>
             <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Análise Inicial</span>
-            <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3rem)] font-medium leading-[1.05] mb-6">
+            <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.5rem)] font-medium leading-[1.05] mb-6">
               Raio X da<br /><ShinyText>Realidade</ShinyText>
             </h2>
             <p className="text-white/45 text-[15px] leading-[1.85] font-light mb-10">
@@ -356,7 +356,7 @@ const Finance = () => (
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="max-w-4xl mx-auto">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Mentoria Exclusiva</span>
-        <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-6">
+        <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05] mb-6">
           Inteligência<br /><ShinyText>Financeira</ShinyText>
         </h2>
         <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10 max-w-2xl">
@@ -407,7 +407,7 @@ const TransformaMente = () => (
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="max-w-4xl mx-auto">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Inscrições Abertas · 8 Encontros</span>
-        <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.5rem)] font-medium leading-[1.05] mb-6">
+        <h2 className="font-serif text-[clamp(2.6rem,6.5vw,5.25rem)] font-medium leading-[1.05] mb-6">
           Mentoria<br /><ShinyText>TransformaMente</ShinyText>
         </h2>
         <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10 max-w-2xl">
@@ -472,7 +472,7 @@ const MMP = () => (
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="mb-6">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Porta de Entrada</span>
-        <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-8">
+        <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05] mb-8">
           Método<br /><ShinyText>Mentalidade Próspera</ShinyText>
         </h2>
         <p className="text-white/45 text-[15px] leading-[1.85] font-light max-w-2xl">
@@ -499,7 +499,7 @@ const Testimonials = () => (
       <div className="max-w-container mx-auto px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center mb-14">
           <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Depoimentos Reais</span>
-          <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05]">
+          <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05]">
             Histórias de<br /><ShinyText>Transformação</ShinyText>
           </h2>
         </div>
@@ -548,7 +548,7 @@ const Mentora = () => (
             </div>
           </div>
 
-          <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-10">
+          <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05] mb-10">
             Graciane<br /><ShinyText>Paulini</ShinyText>
           </h2>
 
@@ -597,7 +597,7 @@ const Immersion = () => (
         <div className="text-center mb-16">
           <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Agenda de Eventos</span>
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 mb-4">Próxima Imersão</p>
-          <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05]">
+          <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05]">
             Imersão Especial<br /><ShinyText>30 de Maio</ShinyText>
           </h2>
         </div>
