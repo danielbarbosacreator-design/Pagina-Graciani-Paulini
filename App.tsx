@@ -137,8 +137,15 @@ const Hero = () => {
               Aprenda a enxergar novas possibilidades de viver uma vida próspera, transformando sua mente através de pequenas ações práticas no dia a dia.
             </p>
 
-            {/* Contagem + botão — apenas desktop */}
-            <div className="hero-enter hidden lg:flex items-end gap-3 justify-start" style={{ animationDelay: '0.7s' }}>
+            {/* Botão — apenas desktop */}
+            <div className="hero-enter hidden lg:block" style={{ animationDelay: '0.7s' }}>
+              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
+                Me Inscrever Agora <ArrowRight size={16} />
+              </ShinyButton>
+            </div>
+
+            {/* Contagem — apenas desktop, abaixo do botão */}
+            <div className="hero-enter hidden lg:flex items-end gap-3 justify-start" style={{ animationDelay: '0.88s' }}>
               {[
                 { v: pad(time.days), l: 'DIAS' },
                 { v: pad(time.hours), l: 'HRS' },
@@ -153,12 +160,6 @@ const Hero = () => {
                   {i < 3 && <span className="font-serif text-2xl text-gold/40 pb-5">:</span>}
                 </React.Fragment>
               ))}
-            </div>
-
-            <div className="hero-enter hidden lg:block" style={{ animationDelay: '0.88s' }}>
-              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
-                Me Inscrever Agora <ArrowRight size={16} />
-              </ShinyButton>
             </div>
           </div>
 
@@ -204,9 +205,14 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Contagem + botão — apenas mobile, aparece após a foto */}
+          {/* Botão + contagem — apenas mobile, aparece após a foto */}
           <div className="order-3 lg:hidden flex flex-col items-center gap-10">
-            <div className="hero-enter flex items-end gap-3 justify-center" style={{ animationDelay: '0.7s' }}>
+            <div className="hero-enter" style={{ animationDelay: '0.7s' }}>
+              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
+                Me Inscrever Agora <ArrowRight size={16} />
+              </ShinyButton>
+            </div>
+            <div className="hero-enter flex items-end gap-3 justify-center" style={{ animationDelay: '0.88s' }}>
               {[
                 { v: pad(time.days), l: 'DIAS' },
                 { v: pad(time.hours), l: 'HRS' },
@@ -221,11 +227,6 @@ const Hero = () => {
                   {i < 3 && <span className="font-serif text-2xl text-gold/40 pb-5">:</span>}
                 </React.Fragment>
               ))}
-            </div>
-            <div className="hero-enter" style={{ animationDelay: '0.88s' }}>
-              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
-                Me Inscrever Agora <ArrowRight size={16} />
-              </ShinyButton>
             </div>
           </div>
 
