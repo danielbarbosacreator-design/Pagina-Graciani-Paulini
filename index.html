@@ -53,7 +53,30 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      font-size: 15px;
+      line-height: 1.65;
     }
+
+    /* GPU layer promotion para elementos fixos */
+    nav { will-change: transform; transform: translateZ(0); }
+
+    /* Evitar repaint em hover de links */
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    /* Contain layout em seções para evitar reflow */
+    section {
+      contain: layout style;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 600px;
+    }
+
+    /* Primeira seção visível não usa content-visibility */
+    #hero { content-visibility: visible; }
+
+    /* Imagens lazy */
+    img { content-visibility: auto; }
 
     ::selection {
       background: rgba(197, 160, 89, 0.3);
@@ -228,33 +251,37 @@
     .bg-deep     { background: #0A0A0A; }
     .bg-elevated { background: #131210; }
 
-    /* Ambient light orbs */
+    /* Ambient light orbs — tamanho e blur reduzidos para performance */
     .glow-gold {
       position: absolute;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 70%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(197,160,89,0.08) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
-      filter: blur(60px);
+      filter: blur(40px);
+      will-change: auto;
+      transform: translateZ(0);
     }
     .glow-warm {
       position: absolute;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(180,120,60,0.07) 0%, transparent 70%);
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(180,120,60,0.06) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
-      filter: blur(80px);
+      filter: blur(50px);
+      will-change: auto;
+      transform: translateZ(0);
     }
 
     /* Light beam */
     .light-beam {
       position: absolute;
-      width: 200px;
+      width: 160px;
       height: 100%;
-      background: linear-gradient(180deg, transparent 0%, rgba(197,160,89,0.04) 50%, transparent 100%);
-      transform: rotate(-15deg) translateX(-50%);
+      background: linear-gradient(180deg, transparent 0%, rgba(197,160,89,0.03) 50%, transparent 100%);
+      transform: rotate(-15deg) translateX(-50%) translateZ(0);
       pointer-events: none;
-      filter: blur(40px);
+      filter: blur(30px);
     }
 
     /* Section divider */
@@ -311,66 +338,127 @@
 
     .hero-aurora-1 {
       position: absolute;
-      width: 1100px; height: 1100px;
+      width: 800px; height: 800px;
       background: radial-gradient(circle at center,
-        rgba(197,160,89,0.60) 0%,
-        rgba(197,160,89,0.22) 30%,
-        rgba(197,160,89,0.06) 55%,
-        transparent 72%);
+        rgba(197,160,89,0.35) 0%,
+        rgba(197,160,89,0.10) 40%,
+        transparent 70%);
       border-radius: 50%;
-      filter: blur(130px);
+      filter: blur(80px);
       pointer-events: none;
       will-change: transform;
       transform: translateZ(0);
-      animation: aurora-drift-1 24s ease-in-out infinite;
+      animation: aurora-drift-1 28s ease-in-out infinite;
     }
     .hero-aurora-2 {
       position: absolute;
-      width: 900px; height: 900px;
+      width: 650px; height: 650px;
       background: radial-gradient(circle at center,
-        rgba(224,200,130,0.55) 0%,
-        rgba(147,120,65,0.18) 35%,
-        rgba(147,120,65,0.04) 58%,
-        transparent 72%);
+        rgba(224,200,130,0.28) 0%,
+        rgba(147,120,65,0.08) 45%,
+        transparent 70%);
       border-radius: 50%;
-      filter: blur(150px);
+      filter: blur(90px);
       pointer-events: none;
       will-change: transform;
       transform: translateZ(0);
-      animation: aurora-drift-2 30s ease-in-out infinite;
+      animation: aurora-drift-2 35s ease-in-out infinite;
     }
     .hero-aurora-3 {
       position: absolute;
-      width: 650px; height: 650px;
+      width: 480px; height: 480px;
       background: radial-gradient(circle at center,
-        rgba(240,228,196,0.50) 0%,
-        rgba(197,160,89,0.14) 40%,
-        transparent 68%);
+        rgba(240,228,196,0.25) 0%,
+        rgba(197,160,89,0.07) 50%,
+        transparent 70%);
       border-radius: 50%;
-      filter: blur(100px);
+      filter: blur(70px);
       pointer-events: none;
       will-change: transform;
       transform: translateZ(0);
-      animation: aurora-drift-3 20s ease-in-out infinite;
+      animation: aurora-drift-3 22s ease-in-out infinite;
     }
     .hero-aurora-sweep {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 90% 65% at 62% 38%, rgba(197,160,89,0.14) 0%, transparent 62%),
-        radial-gradient(ellipse 55% 85% at 18% 72%, rgba(147,120,65,0.10) 0%, transparent 62%);
+        radial-gradient(ellipse 80% 55% at 62% 38%, rgba(197,160,89,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 70% at 18% 72%, rgba(147,120,65,0.06) 0%, transparent 65%);
       pointer-events: none;
-      animation: aurora-pulse 14s ease-in-out infinite;
+      animation: aurora-pulse 16s ease-in-out infinite;
     }
 
+    /* Mobile: desativar auroras pesadas */
+    @media (max-width: 768px) {
+      .hero-aurora-1, .hero-aurora-2 { display: none; }
+      .hero-aurora-3 {
+        width: 320px; height: 320px;
+        filter: blur(50px);
+        animation: none;
+      }
+    }
+
+    /* ── Scroll reveal — GPU only (opacity + transform) ────── */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(16px);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+      will-change: auto;
+    }
+
+    /* ── Card hover lift — apenas transform e box-shadow ───── */
+    .card-lift {
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.22s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-3px) translateZ(0);
+      box-shadow: 0 8px 24px -6px rgba(197,160,89,0.10);
+    }
+
+    /* ── Button scale on hover ──────────────────────────────── */
+    .shiny-cta {
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                  var(--transition) !important;
+    }
+    .shiny-cta:hover { transform: scale(1.025) translateZ(0); }
+    .shiny-cta:active { transform: scale(0.98) translateY(1px); }
+
+    /* ── Title fade-in ──────────────────────────────────────── */
+    @keyframes title-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .title-animate {
+      opacity: 0;
+      animation: title-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Mobile: simplificar animações */
+    @media (max-width: 768px) {
+      .reveal {
+        transform: translateY(10px);
+        transition-duration: 0.35s;
+      }
+      .card-lift:hover { transform: none; box-shadow: none; }
+      .glow-gold, .glow-warm, .light-beam { display: none; }
+    }
+
+    /* Reduzir movimento para quem prefere */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .hero-enter, .title-animate {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>

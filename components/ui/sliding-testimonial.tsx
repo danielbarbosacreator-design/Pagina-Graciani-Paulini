@@ -12,7 +12,7 @@ const testimonials: Testimonial[] = [
     name: 'Bruna Fernandes',
     ctx: 'Mentoria Financeira · Empresária',
     description:
-      'Essa Mentoria foi fundamental para alinharmos muitas coisas em 2024, em casal aprendemos que não existe meu dinheiro e o dinheiro do meu marido, e sim o dinheiro da família. A partir daí surgiram conversas maduras olho no olho. Conseguimos identificar nossos ganhos, gastos, dívidas, e traçamos metas de quitar as dívidas e realizar sonhos — e o primeiro sonho já aconteceu: a compra do nosso primeiro carro.',
+      'Essa Mentoria foi fundamental para alinharmos muitas coisas em 2024, em casal aprendemos que não existe meu dinheiro e o dinheiro do meu marido, e sim o dinheiro da família. A partir daí surgiram conversas maduras olho no olho. Conseguimos identificar nossos ganhos, gastos, dívidas, e traçamos metas de quitar as dívidas e realizar sonhos, e o primeiro sonho já aconteceu: a compra do nosso primeiro carro.',
   },
   {
     name: 'Larissa Lunelli',

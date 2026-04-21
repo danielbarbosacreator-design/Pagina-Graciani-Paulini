@@ -53,7 +53,7 @@ export function BeamsBackground({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const beamsRef = useRef<Beam[]>([]);
     const animationFrameRef = useRef<number>(0);
-    const MINIMUM_BEAMS = 20;
+    const MINIMUM_BEAMS = 10;
 
     const opacityMap = {
         subtle: 0.7,
@@ -69,14 +69,14 @@ export function BeamsBackground({
         if (!ctx) return;
 
         const updateCanvasSize = () => {
-            const dpr = window.devicePixelRatio || 1;
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             canvas.width = window.innerWidth * dpr;
             canvas.height = window.innerHeight * dpr;
             canvas.style.width = `${window.innerWidth}px`;
             canvas.style.height = `${window.innerHeight}px`;
             ctx.scale(dpr, dpr);
 
-            const totalBeams = MINIMUM_BEAMS * 1.5;
+            const totalBeams = MINIMUM_BEAMS;
             beamsRef.current = Array.from({ length: totalBeams }, () =>
                 createBeam(canvas.width, canvas.height)
             );

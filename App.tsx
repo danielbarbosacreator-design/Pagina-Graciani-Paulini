@@ -1,21 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   ArrowRight, CheckCircle2, Clock, Target,
   TrendingUp, BookOpen, Award, MapPin, Calendar,
   Lock, Instagram, Mail, MessageSquare, Star, Menu
 } from 'lucide-react';
 import { ShinyButton } from './components/ui/shiny-button';
+import { ShinyText } from './components/ui/animated-shiny-text';
 import { GlowCard } from './components/ui/spotlight-card';
 import { SlidingTestimonials } from './components/ui/sliding-testimonial';
 import { TransformaMentePricing } from './components/ui/pricing-card';
 import { MMPPricingCard } from './components/ui/mmp-pricing-card';
 import { BeamsBackground } from './components/ui/beams-background';
+import { ImageAutoSlider } from './components/ui/image-auto-slider';
+import { TestimonialsStack } from './components/TestimonialsStack';
 
 /* ============================================================
    GRACIANE PAULINI — LANDING PAGE PREMIUM
    ============================================================ */
 
-const COUNTDOWN_TARGET = new Date('2026-05-02T20:00:00');
+const COUNTDOWN_TARGET = new Date('2026-05-30T09:00:00');
 
 const useCountdown = (target: Date) => {
   const calc = () => {
@@ -100,24 +104,7 @@ const Navbar = () => {
 const Hero = () => {
   const time = useCountdown(COUNTDOWN_TARGET);
   const pad = (n: number) => String(n).padStart(2, '0');
-  const contentRef = useRef<HTMLDivElement>(null);
 
-  // Scroll blur + parallax
-  useEffect(() => {
-    const onScroll = () => {
-      if (!contentRef.current) return;
-      const hero = document.getElementById('hero');
-      if (!hero) return;
-      const limit = hero.offsetHeight * 0.55;
-      const t = Math.min(window.scrollY / limit, 1);
-      const ease = t * t; // quadratic ease-in for smoother feel
-      contentRef.current.style.filter    = `blur(${(ease * 7).toFixed(2)}px)`;
-      contentRef.current.style.opacity   = `${1 - ease * 0.55}`;
-      contentRef.current.style.transform = `translateY(${ease * -36}px)`;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   return (
     <BeamsBackground intensity="medium" className="bg-[#0A0A0A]">
@@ -125,30 +112,28 @@ const Hero = () => {
 
         {/* ── Content (blur on scroll) ── */}
         <div
-          ref={contentRef}
           className="max-w-container mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-16 lg:gap-20 items-center relative z-10"
-          style={{ willChange: 'filter, opacity, transform' }}
         >
-          <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+          <div className="space-y-10 text-center lg:text-left order-2 lg:order-1">
 
             <div
               className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 border border-gold/15 rounded-full text-[10px] font-semibold uppercase tracking-[0.2em] text-white/50"
               style={{ animationDelay: '0.1s' }}
             >
               <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
-              Inteligência Estratégica
+              Mentoria Exclusiva
             </div>
 
             <div className="hero-enter" style={{ animationDelay: '0.3s' }}>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-gold mb-3">Paulini</p>
-              <h1 className="font-serif text-[clamp(2.8rem,6vw,5rem)] font-semibold leading-[0.95] tracking-[-0.02em]">
-                <G>Raio X</G><br />
-                Mentoria
+              <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-gold mb-3">Graciane Paulini</p>
+              <h1 className="font-serif text-[clamp(2rem,6vw,5rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+                <ShinyText>Mente</ShinyText><br />
+                Próspera
               </h1>
             </div>
 
             <p className="hero-enter text-[15px] lg:text-base text-white/50 font-light leading-[1.85] max-w-lg mx-auto lg:mx-0" style={{ animationDelay: '0.5s' }}>
-              Análise profunda da sua realidade. Clareza, metas e direção prática para esta estação da vida.
+              Aprenda a enxergar novas possibilidades de viver uma vida próspera, transformando sua mente através de pequenas ações práticas no dia a dia.
             </p>
 
             <div className="hero-enter flex items-end gap-3 justify-center lg:justify-start" style={{ animationDelay: '0.7s' }}>
@@ -175,19 +160,47 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="hero-enter order-1 lg:order-2 relative flex justify-center lg:justify-end" style={{ animationDelay: '0.2s' }}>
+          <motion.div
+            className="order-1 lg:order-2 relative flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.88, y: 48, filter: "blur(18px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div className="relative w-full max-w-[400px]">
-              <div className="absolute -inset-8 bg-gold/8 blur-[80px] rounded-full pointer-events-none z-0" />
+              <motion.div
+                className="absolute -inset-8 bg-gold/8 blur-[80px] rounded-full pointer-events-none z-0"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 2.2, delay: 1.0, ease: "easeOut" }}
+              />
               <GlowCard customSize glowColor="gold" className="w-full aspect-[3/4]">
                 <div className="absolute inset-0">
-                  <img src="/images/graciane.jpg" alt="Graciane Paulini" className="w-full h-full object-cover object-top brightness-[0.9] contrast-[1.05]" />
+                  <motion.img
+                    src="/images/graciane.jpg"
+                    alt="Graciane Paulini"
+                    className="w-full h-full object-cover object-top"
+                    initial={{ scale: 1.08 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ filter: "brightness(0.9) contrast(1.05)" }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
                 </div>
               </GlowCard>
-              <div className="absolute -bottom-3 -right-3 w-24 h-[1px] bg-gradient-to-r from-gold/40 to-gold-light/20" />
-              <div className="absolute -bottom-3 -right-3 w-[1px] h-16 bg-gradient-to-b from-gold/40 to-transparent" />
+              <motion.div
+                className="absolute -bottom-3 -right-3 w-24 h-[1px] bg-gradient-to-r from-gold/40 to-gold-light/20"
+                initial={{ scaleX: 0, originX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
+              />
+              <motion.div
+                className="absolute -bottom-3 -right-3 w-[1px] h-16 bg-gradient-to-b from-gold/40 to-transparent"
+                initial={{ scaleY: 0, originY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
+              />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </BeamsBackground>
@@ -197,25 +210,54 @@ const Hero = () => {
 // ─── MENTE PRÓSPERA ───────────────────────────────────────────
 
 const MenteProspera = () => (
-  <section className="relative py-28 lg:py-36 mesh-cool overflow-hidden">
+  <section className="relative py-20 lg:py-32 mesh-cool overflow-hidden">
     <div className="glow-gold" style={{ top: '50%', right: '-200px', transform: 'translateY(-50%)' }} />
 
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
-      <div className="max-w-3xl mx-auto text-center">
-        <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Mentoria Exclusiva</span>
-        <h2 className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.95] mb-8">
-          <G>Mente</G><br />Próspera
-        </h2>
-        <blockquote className="font-serif italic text-xl lg:text-2xl text-white/50 leading-relaxed mb-8">
-          "Como eu me vejo, Eu vejo o mundo!"
-        </blockquote>
-        <p className="text-white/45 text-[15px] leading-[1.85] font-light mb-12 max-w-xl mx-auto">
-          Aprenda a ver infinitas possibilidades de viver uma vida próspera, mudando sua mente e colocando em prática pequenas atividades que mudarão seu destino.
+      <div className="max-w-3xl mx-auto">
+        <div className="mb-12">
+          <p className="font-serif italic text-xl lg:text-2xl text-white/50 leading-relaxed mb-4">
+            Talvez você não consiga explicar exatamente o que está sentindo…
+          </p>
+          <p className="text-white/35 text-[15px] leading-[1.85] font-light">
+            mas sabe que algo não está no lugar.
+          </p>
+        </div>
+
+        <p className="text-white/45 text-[15px] leading-[1.85] font-light mb-10">
+          Você tenta organizar sua vida, tenta fazer o certo, tenta avançar… mas, no fundo, sente que:
         </p>
-        <ShinyButton onClick={() => document.getElementById('mmp')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
-          Me Inscrever Agora <ArrowRight size={16} />
+
+        <div className="space-y-4 mb-14">
+          {[
+            'Está sempre recomeçando e não consegue sustentar',
+            'Se sente sobrecarregada emocionalmente',
+            'Tem dificuldade em tomar decisões com segurança',
+            'Sabe que pode mais, mas não consegue acessar isso',
+            'Vive fases de desânimo, mesmo tentando manter tudo em ordem',
+            'Sua relação com dinheiro não flui como deveria',
+            'Muitas vezes sente que está vivendo no automático',
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-3.5">
+              <span className="w-1.5 h-1.5 bg-gold/40 rounded-full mt-2 flex-shrink-0" />
+              <span className="text-[15px] text-white/50 font-light leading-[1.8]">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="border-l-[2px] border-gold/30 pl-6 mb-12 space-y-4">
+          <p className="text-white/60 text-[15px] font-medium">Isso não é falta de esforço.</p>
+          <p className="text-white/40 text-[15px] font-light leading-[1.8]">
+            Existe um padrão interno que precisa ser entendido e ajustado. Sem isso, você continua tentando… mas não sai do lugar.
+          </p>
+          <p className="font-serif italic text-white/50 text-[15px]">
+            O primeiro passo não é fazer mais. É entender.
+          </p>
+        </div>
+
+        <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
+          Aplicar para Análise <ArrowRight size={16} />
         </ShinyButton>
-        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/20 mt-5">Vagas Limitadas Para Esta Turma</p>
       </div>
     </div>
   </section>
@@ -224,7 +266,7 @@ const MenteProspera = () => (
 // ─── RAIO X ──────────────────────────────────────────────────
 
 const RaioX = () => (
-  <section id="raiox" className="relative py-28 lg:py-36 bg-elevated overflow-hidden">
+  <section id="raiox" className="relative py-20 lg:py-32 bg-elevated overflow-hidden">
     <div className="glow-warm" style={{ top: '50%', right: '-200px', transform: 'translateY(-50%)' }} />
 
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
@@ -233,22 +275,22 @@ const RaioX = () => (
           <div className="lg:col-span-3">
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/25 mb-1">Graciane Paulini</p>
             <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Análise Inicial</span>
-            <h2 className="font-serif text-[clamp(2rem,4.5vw,3rem)] font-medium leading-[1.05] mb-8">
-              Raio X da<br /><span className="italic"><G>Realidade</G></span>
+            <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3rem)] font-medium leading-[1.05] mb-6">
+              Raio X da<br /><ShinyText>Realidade</ShinyText>
             </h2>
             <p className="text-white/45 text-[15px] leading-[1.85] font-light mb-10">
-              Um encontro exclusivo para uma análise profunda da sua situação atual. Receba instruções e direção claras sobre metas e objetivos coerentes com as suas prioridades para esta estação da vida.
+              Um encontro exclusivo para uma análise profunda da sua situação atual, com direção clara e alinhada às suas prioridades nesta fase da sua vida.
             </p>
             <div className="space-y-4 mb-12">
               {[
-                'Análise detalhada do momento atual',
-                'Instruções práticas para metas imediatas',
-                'Alinhamento com prioridades de vida',
-                'Direcionamento conforme sua disposição em agir',
+                'Análise do momento atual',
+                'Direcionamento prático para metas',
+                'Alinhamento de prioridades',
+                'Orientação conforme sua disposição em agir',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3.5">
                   <CheckCircle2 size={15} className="text-gold/50 mt-1 flex-shrink-0" strokeWidth={2} />
-                  <span className="text-[13px] text-white/45 font-light leading-[1.6]">{item}</span>
+                  <span className="text-[15px] text-white/45 font-light leading-[1.75]">{item}</span>
                 </div>
               ))}
             </div>
@@ -257,14 +299,14 @@ const RaioX = () => (
             </ShinyButton>
           </div>
 
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-4">
             {[
-              { n: '01', t: 'Clareza Absoluta' },
-              { n: '02', t: 'Ação Direcionada' },
-              { n: '03', t: 'Resultados Reais' },
-              { n: '04', t: 'Foco no Essencial' },
+              { n: '01', t: 'Clareza sobre sua realidade' },
+              { n: '02', t: 'Direção prática' },
+              { n: '03', t: 'Foco no essencial' },
+              { n: '04', t: 'Segurança nas decisões' },
             ].map((c, i) => (
-              <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-7 flex items-center gap-6 group hover:border-gold/15 hover:bg-white/[0.04] transition-all duration-500">
+              <div key={i} className="card-lift bg-white/[0.02] border border-white/[0.04] rounded-xl p-7 flex items-center gap-6 group hover:border-gold/15 hover:bg-white/[0.04] transition-all duration-500">
                 <span className="font-serif text-3xl font-light text-white/[0.06] group-hover:text-gold/25 transition-colors">{c.n}</span>
                 <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">{c.t}</h4>
               </div>
@@ -279,21 +321,21 @@ const RaioX = () => (
 // ─── INTELIGÊNCIA FINANCEIRA ─────────────────────────────────
 
 const Finance = () => (
-  <section className="relative py-28 lg:py-36 mesh-warm overflow-hidden">
+  <section className="relative py-20 lg:py-32 mesh-warm overflow-hidden">
     <div className="glow-gold" style={{ top: '30%', left: '-200px' }} />
 
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="max-w-4xl mx-auto">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Mentoria Exclusiva</span>
-        <h2 className="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-8">
-          Inteligência<br /><span className="italic"><G>Financeira</G></span>
+        <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-6">
+          Inteligência<br /><ShinyText>Financeira</ShinyText>
         </h2>
         <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10 max-w-2xl">
           <p className="font-serif italic text-lg text-white/50 leading-relaxed">
-            "Não é sobre quanto você ganha, é sobre como você gerencia o que tem e a mentalidade que constrói para transbordar."
+            "Não é sobre quanto você ganha, mas como gerencia e a mentalidade que constrói."
           </p>
         </blockquote>
-        <div className="inline-flex items-center gap-4 mb-14">
+        <div className="inline-flex items-center gap-4 mb-12">
           <span className="font-serif text-5xl font-medium leading-none gold-text">5</span>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">Encontros</p>
@@ -304,15 +346,15 @@ const Finance = () => (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {[
             { t: 'Cura da Escassez', d: 'Identificação e quebra de crenças limitantes sobre dinheiro.' },
-            { t: 'Pilar da Riqueza', d: 'Construção de uma base sólida para multiplicação de recursos.' },
-            { t: 'Gestão Inteligente', d: 'Plano de ação focado em clareza, honestidade e propósitos.' },
-            { t: 'Fluxo de Abundância', d: 'Alinhamento de prioridades para os próximos 6 meses.' },
-            { t: 'Dinâmica de Casal', d: 'Especial para alinhar metas e sonhos em comum.' },
-            { t: 'Transbordo', d: 'Ocupar seu lugar no mundo através da prosperidade integral.' },
+            { t: 'Pilar da Riqueza', d: 'Base sólida para multiplicação de recursos.' },
+            { t: 'Gestão Inteligente', d: 'Organização, clareza e plano de ação prático.' },
+            { t: 'Fluxo de Abundância', d: 'Alinhamento de prioridades financeiras.' },
+            { t: 'Dinâmica de Casal', d: 'Alinhamento de metas e sonhos em conjunto.' },
+            { t: 'Transbordo', d: 'Posicionamento e prosperidade integral.' },
           ].map((m, i) => (
-            <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-7 group hover:border-gold/20 hover:bg-white/[0.04] transition-all duration-500">
+            <div key={i} className="card-lift bg-white/[0.02] border border-white/[0.04] rounded-xl p-7 group hover:border-gold/20 hover:bg-white/[0.04] transition-all duration-500">
               <h4 className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 mb-3">{m.t}</h4>
-              <p className="text-[12px] text-white/30 font-light leading-relaxed">{m.d}</p>
+              <p className="text-[13px] text-white/35 font-light leading-[1.7]">{m.d}</p>
             </div>
           ))}
         </div>
@@ -328,7 +370,7 @@ const Finance = () => (
 // ─── TRANSFORMAMENTE ─────────────────────────────────────────
 
 const TransformaMente = () => (
-  <section id="transformamente" className="relative py-28 lg:py-36 bg-deep overflow-hidden">
+  <section id="transformamente" className="relative py-20 lg:py-32 bg-deep overflow-hidden">
     <div className="glow-gold" style={{ top: '-100px', right: '-200px' }} />
     <div className="glow-warm" style={{ bottom: '-200px', left: '-100px' }} />
     <div className="light-beam" style={{ left: '80%', top: 0 }} />
@@ -336,19 +378,22 @@ const TransformaMente = () => (
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="max-w-4xl mx-auto">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Inscrições Abertas · 8 Encontros</span>
-        <h2 className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-medium leading-[1.05] mb-8">
-          Mentoria<br /><span className="italic"><G>TransformaMente</G></span>
+        <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.5rem)] font-medium leading-[1.05] mb-6">
+          Mentoria<br /><ShinyText>TransformaMente</ShinyText>
         </h2>
         <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10 max-w-2xl">
           <p className="font-serif italic text-base text-white/50 leading-relaxed">
-            "A verdade é: a gente só se cura quando se conhece. Para me tornar quem Deus me criou para ser, preciso sair do piloto automático e começar a viver a partir da essência dEle em mim!"
+            "A gente só se cura quando se conhece."
           </p>
         </blockquote>
-        <div className="space-y-3 mb-14">
+        <p className="text-white/40 text-[15px] font-light leading-[1.8] mb-10 max-w-xl">
+          Um processo para sair do piloto automático e viver com consciência, identidade e direção.
+        </p>
+        <div className="space-y-4 mb-14">
           {[
-            'Presencial em Joinville ou Online via Meet',
-            '8° Encontro: Encerramento com Palestra e Café',
-            'Inclui Relatório de Perfil com 50 páginas',
+            '8 encontros presenciais ou online',
+            'Encerramento com palestra e café',
+            'Inclui relatório completo de perfil com 50 páginas',
           ].map((t, i) => (
             <div key={i} className="flex items-center gap-3">
               <CheckCircle2 size={14} className="text-gold/50 flex-shrink-0" strokeWidth={2} />
@@ -365,21 +410,21 @@ const TransformaMente = () => (
           <div className="w-8 h-[1px] bg-gradient-to-r from-gold/40 to-transparent" />
           <span className="text-[10px] text-white/25 font-semibold uppercase tracking-[0.2em]">Os 8 Pilares</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { n: '01', t: 'Perfil Natural e Adaptado', d: 'Sua essência x o que você se tornou para agradar.' },
-            { n: '02', t: 'Potencialidades e Valores', d: 'O que te move e quais são seus motivadores reais.' },
-            { n: '03', t: 'Bloqueios Emocionais', d: 'Trabalhar medos e travas que impedem seu crescimento.' },
-            { n: '04', t: 'Tipos Psicológicos', d: 'Pontos a desenvolver e sua forma de perceber o mundo.' },
-            { n: '05', t: 'Quadro dos Sonhos', d: 'Integridade, honra e gratidão como base para o futuro.' },
+            { n: '02', t: 'Potencialidades e Valores', d: 'O que te move e seus motivadores reais.' },
+            { n: '03', t: 'Bloqueios Emocionais', d: 'Medos e travas que impedem seu crescimento.' },
+            { n: '04', t: 'Tipos Psicológicos', d: 'Sua forma de perceber e se relacionar com o mundo.' },
+            { n: '05', t: 'Quadro dos Sonhos', d: 'Integridade, honra e gratidão como base.' },
             { n: '06', t: 'Raio X Financeiro', d: 'Sua relação com dinheiro espelha sua vida íntima.' },
             { n: '07', t: 'Princípios da Riqueza', d: 'Dinheiro, prosperidade e transbordo real.' },
-            { n: '08', t: 'Expectativa x Disposição', d: 'CNV, encerramento com Palestra e Café.' },
+            { n: '08', t: 'Expectativa x Disposição', d: 'Encerramento com palestra e café.' },
           ].map((p, i) => (
-            <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-6 group hover:border-gold/15 hover:bg-white/[0.04] transition-all duration-500">
+            <div key={i} className="card-lift bg-white/[0.02] border border-white/[0.04] rounded-xl p-6 group hover:border-gold/15 hover:bg-white/[0.04] transition-all duration-500">
               <span className="font-serif text-2xl font-light text-white/[0.05] group-hover:text-gold/20 transition-colors block mb-3 leading-none">{p.n}</span>
-              <h4 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/60 leading-snug mb-2">{p.t}</h4>
-              <p className="text-[11px] text-white/25 font-light leading-relaxed">{p.d}</p>
+              <h4 className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/65 leading-snug mb-2">{p.t}</h4>
+              <p className="text-[12px] text-white/30 font-light leading-[1.7]">{p.d}</p>
             </div>
           ))}
         </div>
@@ -391,18 +436,18 @@ const TransformaMente = () => (
 // ─── MMP ─────────────────────────────────────────────────────
 
 const MMP = () => (
-  <section id="mmp" className="relative py-28 lg:py-36 mesh-cool overflow-hidden">
+  <section id="mmp" className="relative py-20 lg:py-32 mesh-cool overflow-hidden">
     <div className="glow-warm" style={{ bottom: '-100px', left: '-200px' }} />
     <div className="light-beam" style={{ left: '30%', top: 0 }} />
 
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="mb-6">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Porta de Entrada</span>
-        <h2 className="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-medium leading-[1.1] mb-6">
-          Método<br /><span className="italic"><G>Mentalidade Próspera</G></span>
+        <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-8">
+          Método<br /><ShinyText>Mentalidade Próspera</ShinyText>
         </h2>
         <p className="text-white/45 text-[15px] leading-[1.85] font-light max-w-2xl">
-          A forma de pensar, sentir e agir que cria abundância em todas as áreas da vida. Um treinamento gravado completo para você dar o primeiro passo.
+          Treinamento com 20 aulas para iniciar sua transformação. O primeiro passo para uma mente próspera.
         </p>
       </div>
 
@@ -410,22 +455,7 @@ const MMP = () => (
         <MMPPricingCard />
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { a: 'Comece', b: 'por Aqui' },
-          { a: 'Um Novo', b: 'Começo' },
-          { a: 'Clareza Para', b: 'Prosperar' },
-          { a: 'Bônus', b: 'Especiais' },
-        ].map((c, i) => (
-          <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-8 group hover:border-gold/15 hover:bg-white/[0.04] transition-all duration-500 flex flex-col justify-between aspect-square">
-            <p className="text-[8px] font-semibold uppercase tracking-[0.25em] text-gold/30">Método Mentalidade Próspera</p>
-            <div>
-              <h4 className="font-serif text-2xl font-medium text-white/80 leading-tight">{c.a}</h4>
-              <h4 className="font-serif text-2xl font-medium leading-tight gold-text">{c.b}</h4>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ImageAutoSlider />
     </div>
   </section>
 );
@@ -433,24 +463,22 @@ const MMP = () => (
 // ─── DEPOIMENTOS ─────────────────────────────────────────────
 
 const Testimonials = () => (
-  <section id="depoimentos" className="relative py-28 lg:py-36 bg-elevated overflow-hidden">
+  <section id="depoimentos" className="relative py-20 lg:py-32 bg-elevated overflow-hidden">
     <div className="glow-warm" style={{ top: '-150px', left: '50%', transform: 'translateX(-50%)' }} />
 
     <div className="reveal relative z-10">
       <div className="max-w-container mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center mb-20">
+        <div className="max-w-2xl mx-auto text-center mb-14">
           <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Depoimentos Reais</span>
-          <h2 className="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-medium leading-[1.1]">
-            Histórias de<br /><span className="italic"><G>Transformação</G></span>
+          <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05]">
+            Histórias de<br /><ShinyText>Transformação</ShinyText>
           </h2>
         </div>
       </div>
 
-      <div className="mb-16 px-0">
-        <SlidingTestimonials />
-      </div>
+      <TestimonialsStack />
 
-      <div className="max-w-container mx-auto px-6 lg:px-8">
+      <div className="max-w-container mx-auto px-6 lg:px-8 pb-10">
         <div className="flex flex-col items-center gap-3">
           <div className="flex gap-1">{[1,2,3,4,5].map(i => <Star key={i} size={13} fill="#C5A059" color="#C5A059" />)}</div>
           <p className="text-[10px] uppercase tracking-[0.2em] text-white/20 font-medium">+10.000 atendimentos realizados</p>
@@ -463,7 +491,7 @@ const Testimonials = () => (
 // ─── MENTORA ─────────────────────────────────────────────────
 
 const Mentora = () => (
-  <section id="mentora" className="relative py-28 lg:py-36 mesh-warm overflow-hidden">
+  <section id="mentora" className="relative py-20 lg:py-32 mesh-warm overflow-hidden">
     <div className="glow-gold" style={{ top: '-100px', left: '-200px' }} />
     <div className="glow-warm" style={{ bottom: '-100px', right: '-200px' }} />
     <div className="light-beam" style={{ left: '50%', top: 0 }} />
@@ -491,35 +519,35 @@ const Mentora = () => (
             </div>
           </div>
 
-          <h2 className="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-10">
-            Graciane<br /><span className="italic"><G>Paulini</G></span>
+          <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05] mb-10">
+            Graciane<br /><ShinyText>Paulini</ShinyText>
           </h2>
 
-          <div className="space-y-5 mb-10">
+          <div className="space-y-6 mb-10">
             <p className="text-[15px] text-white/70 font-normal leading-[1.85]">
-              Mentora de Inteligência Emocional e Financeira. Minha razão de viver é amar a Deus sobre todas as coisas, a mim mesma e ao meu próximo. Viver o melhor da vida aqui e agora, ensinando a transformação de mentalidade com pequenas ações colocadas em prática todos os dias.
+              Mentora de Inteligência Emocional e Financeira. Sua razão de viver é amar a Deus, a si mesma e ao próximo. Ensina transformação de mentalidade através de ações práticas diárias.
             </p>
             <p className="text-[15px] text-white/45 font-light leading-[1.85]">
-              Com mais de 22 anos de experiência comercial, desenvolvi uma escuta ativa e soluções personalizadas, capacitando pessoas para melhorar seu estilo de vida e, principalmente, ser feliz no caminho.
+              Mais de 22 anos de experiência no varejo e indústria, com escuta ativa e direcionamento personalizado para quem quer mais clareza, leveza e propósito na vida.
             </p>
           </div>
 
           <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10">
             <p className="font-serif italic text-lg text-white/50 leading-relaxed">
-              "A verdadeira prosperidade financeira é consequência de seu autoconhecimento, da sua cura interior e da forma como se posiciona na vida."
+              "Prosperidade é consequência do autoconhecimento e do seu posicionamento na vida."
             </p>
           </blockquote>
 
           <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: <Award size={16} strokeWidth={1.5} />, label: '+22 Anos Varejo & Indústria' },
-              { icon: <BookOpen size={16} strokeWidth={1.5} />, label: 'Coach Ikigai · Propósito' },
-              { icon: <Target size={16} strokeWidth={1.5} />, label: 'Analista de Perfil Comportamental' },
-              { icon: <TrendingUp size={16} strokeWidth={1.5} />, label: 'Finanças Comportamentais' },
+              { icon: <Award size={16} strokeWidth={1.5} />, label: 'Inteligência Emocional' },
+              { icon: <BookOpen size={16} strokeWidth={1.5} />, label: 'Finanças Comportamentais' },
+              { icon: <Target size={16} strokeWidth={1.5} />, label: 'Análise de Perfil' },
+              { icon: <TrendingUp size={16} strokeWidth={1.5} />, label: 'Propósito' },
             ].map((c, i) => (
               <div key={i} className="flex items-center gap-3 py-3 px-4 bg-white/[0.03] border border-white/[0.04] rounded-lg">
                 <span className="text-gold/60">{c.icon}</span>
-                <span className="text-[11px] font-medium text-white/50">{c.label}</span>
+                <span className="text-[12px] font-medium text-white/55">{c.label}</span>
               </div>
             ))}
           </div>
@@ -532,7 +560,7 @@ const Mentora = () => (
 // ─── IMERSÃO ─────────────────────────────────────────────────
 
 const Immersion = () => (
-  <section className="relative py-28 lg:py-36 mesh-cool overflow-hidden">
+  <section className="relative py-20 lg:py-32 mesh-cool overflow-hidden">
     <div className="glow-gold" style={{ bottom: '-100px', left: '30%' }} />
 
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
@@ -540,32 +568,56 @@ const Immersion = () => (
         <div className="text-center mb-16">
           <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Agenda de Eventos</span>
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 mb-4">Próxima Imersão</p>
-          <h2 className="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-medium leading-[1.1]">
-            Prepare-se para o dia<br />que mudará sua <span className="italic"><G>mentalidade</G></span>
+          <h2 className="font-serif text-[clamp(1.75rem,4.5vw,3.2rem)] font-medium leading-[1.05]">
+            Imersão Especial<br /><ShinyText>30 de Maio</ShinyText>
           </h2>
         </div>
 
         <div className="bg-white/[0.02] backdrop-blur-sm border border-white/[0.04] rounded-2xl p-10 lg:p-16 relative overflow-hidden hover:border-gold/15 transition-all duration-500">
           <div className="absolute top-8 right-8 opacity-[0.02] pointer-events-none"><Calendar size={140} strokeWidth={0.5} /></div>
 
-          <div className="flex flex-col md:flex-row items-start gap-12 relative z-10">
-            <div className="bg-[#0A0A0A] border border-gold/20 rounded-xl p-8 flex flex-col items-center justify-center min-w-[110px]">
-              <span className="font-serif text-4xl font-medium leading-none gold-text">30</span>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/70 mt-2">Maio</span>
+          {/* Conteúdo centralizado */}
+          <div className="flex flex-col items-center text-center relative z-10">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/60">Evento Presencial · 30 de Maio de 2026</span>
             </div>
-            <div className="flex-1">
-              <h3 className="font-serif text-2xl font-medium text-white/90 mb-4">Imersão Especial</h3>
-              <p className="text-[15px] text-white/40 font-light leading-[1.85] mb-8">
-                Um dia inteiro de imersão profunda. Algo que nunca foi revelado será compartilhado. Você está pronta para suportar a verdade da sua própria transformação?
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <div className="flex items-center gap-2.5 text-[11px] text-white/30 font-medium">
-                  <Clock size={14} className="text-gold/50" strokeWidth={1.5} /> 09:00 às 18:00
+            <h3 className="font-serif text-2xl font-medium text-white/90 mb-4">Imersão Especial</h3>
+            <p className="text-[15px] text-white/40 font-light leading-[1.85] mb-10 max-w-lg">
+              Um dia completo de transformação de mentalidade. Para mulheres prontas para dar o próximo passo.
+            </p>
+
+            {/* Detalhes do evento */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 w-full max-w-xl">
+              {[
+                { icon: <Clock size={13} strokeWidth={1.5} />, label: 'Horário', value: '09h às 18h', gold: false },
+                { icon: <MapPin size={13} strokeWidth={1.5} />, label: 'Local', value: 'A Revelar', gold: false },
+                { icon: <Award size={13} strokeWidth={1.5} />, label: 'Vagas', value: 'Apenas 30', gold: true },
+                { icon: <Target size={13} strokeWidth={1.5} />, label: 'Formato', value: 'Full Day', gold: false },
+              ].map((item, i) => (
+                <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-lg p-4 flex flex-col items-center gap-1.5">
+                  <span className="text-gold/50">{item.icon}</span>
+                  <span className="text-[9px] uppercase tracking-[0.15em] text-white/20 font-semibold">{item.label}</span>
+                  <span className={`text-[12px] font-medium ${item.gold ? 'gold-text' : 'text-white/60'}`}>{item.value}</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-[11px] text-white/30 font-medium">
-                  <MapPin size={14} className="text-gold/50" strokeWidth={1.5} /> Local Secreto
+              ))}
+            </div>
+
+            {/* O que esperar */}
+            <div className="flex gap-10 mx-auto">
+              {[
+                ['Conteúdos inéditos', 'Dinâmicas práticas'],
+                ['Conexão com outras mulheres', 'Experiência especial de encerramento'],
+              ].map((col, ci) => (
+                <div key={ci} className="flex flex-col gap-3">
+                  {col.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <CheckCircle2 size={14} className="text-gold/50 flex-shrink-0 mt-0.5" strokeWidth={2} />
+                      <span className="text-[13px] text-white/45 font-light leading-snug text-left">{item}</span>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -631,8 +683,13 @@ const Footer = () => (
 const App: React.FC = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);

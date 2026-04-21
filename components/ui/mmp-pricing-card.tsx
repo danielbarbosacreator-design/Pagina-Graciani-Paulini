@@ -1,15 +1,15 @@
 import React from 'react';
-import { ArrowRight, Brain, Lightbulb, Heart, TrendingUp, Users, Compass, Sparkles } from 'lucide-react';
+import { ArrowRight, Brain, Lightbulb, Heart, TrendingUp, Users, Compass, Sparkles, ShieldCheck, Zap, Lock, RefreshCcw } from 'lucide-react';
 import { ShinyButton } from './shiny-button';
 
 const modules = [
-  { icon: <Brain size={17} strokeWidth={1.3} />, label: 'Mente e Corpo equilibrados' },
-  { icon: <Lightbulb size={17} strokeWidth={1.3} />, label: 'Mentalidade de Possibilidades' },
-  { icon: <Heart size={17} strokeWidth={1.3} />, label: 'Poder da Gratidão real' },
-  { icon: <TrendingUp size={17} strokeWidth={1.3} />, label: 'Administração de Recursos' },
-  { icon: <Users size={17} strokeWidth={1.3} />, label: 'Relacionamentos Saudáveis' },
-  { icon: <Compass size={17} strokeWidth={1.3} />, label: 'Propósito e Legado' },
-  { icon: <Sparkles size={17} strokeWidth={1.3} />, label: 'Abundância e Transbordo' },
+  { icon: <Brain size={17} strokeWidth={1.3} />, label: 'Equilíbrio emocional' },
+  { icon: <Lightbulb size={17} strokeWidth={1.3} />, label: 'Mentalidade de crescimento' },
+  { icon: <Heart size={17} strokeWidth={1.3} />, label: 'Poder da gratidão' },
+  { icon: <TrendingUp size={17} strokeWidth={1.3} />, label: 'Administração de recursos' },
+  { icon: <Users size={17} strokeWidth={1.3} />, label: 'Relacionamentos' },
+  { icon: <Compass size={17} strokeWidth={1.3} />, label: 'Propósito' },
+  { icon: <Sparkles size={17} strokeWidth={1.3} />, label: 'Abundância' },
 ];
 
 export function MMPPricingCard() {
@@ -18,10 +18,10 @@ export function MMPPricingCard() {
       <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/[0.05]">
 
         {/* ── Left: Price + CTA ───────────────────────────────── */}
-        <div className="p-10 lg:p-14 flex flex-col items-center justify-center text-center gap-8">
+        <div className="p-10 lg:p-14 flex flex-col items-center justify-between text-center gap-7">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/60 mb-2">
-              Acesso Imediato
+              Porta de Entrada
             </p>
             <h3 className="font-serif text-2xl font-medium text-white/80">
               Método Mentalidade Próspera
@@ -31,37 +31,65 @@ export function MMPPricingCard() {
             </p>
           </div>
 
-          <div className="flex items-start gap-1.5">
-            <span className="font-serif text-lg text-white/30 mt-2 leading-none">R$</span>
-            <span
-              className="font-serif font-semibold leading-none tabular-nums"
-              style={{
-                fontSize: 'clamp(4.5rem, 12vw, 6.5rem)',
-                background: 'linear-gradient(135deg, #C5A059 0%, #E8D5A3 40%, #C5A059 60%, #937841 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              47
-            </span>
+          {/* Preço */}
+          <div className="flex flex-col items-center gap-0 w-full">
+            {/* Valor principal */}
+            <div className="flex items-end gap-1.5 relative">
+              <div className="flex flex-col items-end mb-4 gap-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-white/25 line-through tracking-wide">R$ 197,00</span>
+                  <span className="text-[10px] font-semibold text-gold/50 bg-gold/10 border border-gold/15 rounded-full px-2 py-0.5">-76%</span>
+                </div>
+                <span className="font-serif text-xl text-white/30 leading-none">R$</span>
+              </div>
+              <span
+                className="font-serif font-semibold leading-none tabular-nums"
+                style={{
+                  fontSize: 'clamp(5.5rem, 14vw, 8.5rem)',
+                  background: 'linear-gradient(135deg, #C5A059 0%, #E8D5A3 40%, #C5A059 60%, #937841 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                47
+              </span>
+              <span className="font-serif text-xl text-white/30 mb-4 leading-none">,90</span>
+            </div>
+
+            {/* Parcelamento */}
+            <div className="flex items-center gap-2 bg-white/[0.02] border border-white/[0.04] rounded-full px-4 py-1.5 mt-3">
+              <span className="text-[11px] text-white/30 tracking-wide">ou</span>
+              <span className="text-[12px] font-medium text-white/50">2x de R$ 25,90</span>
+              <span className="text-[10px] text-white/20">sem juros</span>
+            </div>
           </div>
 
           <ShinyButton
-            className="uppercase tracking-[0.1em]"
+            className="uppercase tracking-[0.1em] w-full justify-center"
             style={{ '--padding-x': '2rem', '--padding-y': '0.9rem' } as React.CSSProperties}
           >
             Iniciar Minha Mudança <ArrowRight size={15} />
           </ShinyButton>
 
-          <div className="space-y-1.5 text-center">
-            <p className="text-[11px] text-white/20 font-light tracking-wide">
-              20 aulas gravadas · Acesso vitalício
-            </p>
-            <p className="text-[10px] text-white/15 font-light uppercase tracking-widest">
-              Disponível na Kiwify
-            </p>
+          {/* Selos de credibilidade */}
+          <div className="grid grid-cols-2 gap-2 w-full">
+            {[
+              { icon: <RefreshCcw size={13} strokeWidth={1.5} />, text: '7 dias de garantia' },
+              { icon: <Zap size={13} strokeWidth={1.5} />, text: 'Acesso imediato' },
+              { icon: <Lock size={13} strokeWidth={1.5} />, text: 'Pagamento seguro' },
+              { icon: <ShieldCheck size={13} strokeWidth={1.5} />, text: 'Acesso vitalício' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 bg-white/[0.02] border border-white/[0.04] rounded-lg px-3 py-2.5">
+                <span className="text-gold/50 flex-shrink-0">{item.icon}</span>
+                <span className="text-[11px] text-white/35 font-light">{item.text}</span>
+              </div>
+            ))}
           </div>
+
+          <p className="text-[10px] text-white/20 font-light uppercase tracking-widest">
+            Disponível na <span className="text-gold/50 font-medium">Kiwify</span>
+          </p>
         </div>
 
         {/* ── Right: Module list ──────────────────────────────── */}
