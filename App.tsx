@@ -89,10 +89,31 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="lg:hidden fixed inset-0 bg-[#0A0A0A]/98 backdrop-blur-xl z-[60] flex flex-col items-center justify-center gap-10">
-          {links.map(l => <button key={l.id} onClick={() => go(l.id)} className="font-serif text-2xl text-white/80">{l.label}</button>)}
-          <ShinyButton onClick={() => go('mmp')} className="uppercase tracking-wider mt-4">Começar</ShinyButton>
-          <button onClick={() => setOpen(false)} className="mt-6 text-[10px] uppercase tracking-widest text-white/30 border border-white/10 rounded-full px-6 py-2">Fechar</button>
+        <div className="lg:hidden fixed inset-0 bg-[#0A0A0A]/98 backdrop-blur-xl z-[60] flex flex-col items-center justify-center gap-8">
+          <button
+            onClick={() => setOpen(false)}
+            className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors"
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <line x1="3" y1="3" x2="19" y2="19" /><line x1="19" y1="3" x2="3" y2="19" />
+            </svg>
+          </button>
+
+          <span className="font-serif text-[10px] uppercase tracking-[0.3em] text-gold/40 mb-2">Navegação</span>
+
+          {links.map(l => (
+            <button
+              key={l.id}
+              onClick={() => go(l.id)}
+              className="font-serif text-3xl font-medium text-white/75 hover:text-white transition-colors duration-200"
+            >
+              {l.label}
+            </button>
+          ))}
+
+          <div className="mt-4">
+            <ShinyButton onClick={() => go('mmp')} className="uppercase tracking-wider">Começar Agora</ShinyButton>
+          </div>
         </div>
       )}
     </nav>
