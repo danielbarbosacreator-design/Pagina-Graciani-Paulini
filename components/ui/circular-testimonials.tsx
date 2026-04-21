@@ -170,7 +170,7 @@ export const CircularTestimonials = ({
       <div className="grid md:grid-cols-2 gap-10 md:gap-20">
         {/* Images */}
         <div
-          className="relative w-full h-80 md:h-96"
+          className="relative w-full h-52 md:h-64"
           style={{ perspective: "1000px" }}
           ref={imageContainerRef}
         >
