@@ -126,14 +126,14 @@ const Hero = () => {
             </div>
 
             <div className="hero-enter" style={{ animationDelay: '0.3s' }}>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-gold mb-3">Graciane Paulini</p>
-              <h1 className="font-serif text-[clamp(2rem,6vw,5rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-gold mb-4">Graciane Paulini</p>
+              <h1 className="font-serif text-[clamp(3.2rem,10vw,5rem)] font-semibold leading-[1.0] tracking-[-0.03em]">
                 <ShinyText>Mente</ShinyText><br />
                 Próspera
               </h1>
             </div>
 
-            <p className="hero-enter text-[15px] lg:text-base text-white/50 font-light leading-[1.85] max-w-lg mx-auto lg:mx-0" style={{ animationDelay: '0.5s' }}>
+            <p className="hero-enter text-[15px] lg:text-base text-white/50 font-light leading-[2] max-w-lg mx-auto lg:mx-0 mt-2" style={{ animationDelay: '0.5s' }}>
               Aprenda a enxergar novas possibilidades de viver uma vida próspera, transformando sua mente através de pequenas ações práticas no dia a dia.
             </p>
 
