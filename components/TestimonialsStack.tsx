@@ -3,14 +3,6 @@ import { CircularTestimonials } from "@/components/ui/circular-testimonials"
 
 const TESTIMONIALS = [
   {
-    name: "Eliane S.",
-    designation: "Inteligência Financeira",
-    quote: "Aprendi a me relacionar com o dinheiro de uma forma que nunca imaginei. A Graciane tem uma forma única de ensinar que transforma de verdade.",
-    src: "/images/Eliane.jpg.jpeg",
-    objectFit: "contain",
-    objectPosition: "center top",
-  },
-  {
     name: "Jaqueline B.",
     designation: "Raio X",
     quote: "Em um encontro tive mais clareza do que anos tentando sozinha. Foi um divisor de águas na minha vida.",
