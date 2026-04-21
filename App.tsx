@@ -97,7 +97,7 @@ const Navbar = () => {
           />
 
           {/* Painel direito */}
-          <div className="lg:hidden fixed top-0 right-0 h-full w-64 bg-[#0D0D0D]/98 backdrop-blur-xl border-l border-white/[0.06] z-[60] flex flex-col pt-20 pb-10 px-8 gap-6">
+          <div className="lg:hidden fixed top-0 right-0 h-full w-64 bg-[#0A0A0A] border-l border-white/[0.08] z-[60] flex flex-col pt-20 pb-10 px-8 gap-6">
             <button
               onClick={() => setOpen(false)}
               className="absolute top-5 right-5 text-white/35 hover:text-white transition-colors"
