@@ -14,6 +14,7 @@ interface Testimonial {
   name: string;
   designation: string;
   src: string;
+  objectPosition?: string;
 }
 interface Colors {
   name?: string;
@@ -179,8 +180,8 @@ export const CircularTestimonials = ({
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name}
-              className="absolute w-full h-full object-cover object-top rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-              style={getImageStyle(index)}
+              className="absolute w-full h-full object-cover rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              style={{ ...getImageStyle(index), objectPosition: testimonial.objectPosition ?? 'top' }}
             />
           ))}
         </div>
