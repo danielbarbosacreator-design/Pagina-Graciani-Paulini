@@ -15,6 +15,7 @@ interface Testimonial {
   designation: string;
   src: string;
   objectPosition?: string;
+  objectFit?: string;
 }
 interface Colors {
   name?: string;
@@ -181,7 +182,7 @@ export const CircularTestimonials = ({
               src={testimonial.src}
               alt={testimonial.name}
               className="absolute w-full h-full object-cover rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-              style={{ ...getImageStyle(index), objectPosition: testimonial.objectPosition ?? 'top' }}
+              style={{ ...getImageStyle(index), objectFit: (testimonial.objectFit ?? 'cover') as React.CSSProperties['objectFit'], objectPosition: testimonial.objectPosition ?? 'top' }}
             />
           ))}
         </div>
