@@ -127,7 +127,7 @@ const Hero = () => {
 
             <div className="hero-enter" style={{ animationDelay: '0.3s' }}>
               <p className="text-[10px] font-semibold uppercase tracking-[0.4em] text-gold mb-4">Graciane Paulini</p>
-              <h1 className="font-serif text-[clamp(3.2rem,10vw,5rem)] font-semibold leading-[1.0] tracking-[-0.03em]">
+              <h1 className="font-serif text-[clamp(5rem,18vw,10rem)] font-semibold leading-[1.0] tracking-[-0.03em]">
                 <ShinyText>Mente</ShinyText><br />
                 Próspera
               </h1>
