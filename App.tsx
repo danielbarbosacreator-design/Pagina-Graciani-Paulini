@@ -714,9 +714,9 @@ const Footer = () => (
             <p className="text-[11px] text-white/25 mt-1">Nubank · Graciane Paulini</p>
           </div>
           <div className="flex gap-5">
-            {[Instagram, Mail, MessageSquare].map((Icon, i) => (
-              <a key={i} href="#" className="text-white/15 hover:text-gold transition-colors duration-300"><Icon size={17} strokeWidth={1.5} /></a>
-            ))}
+            <a href="https://www.instagram.com/gracianepaulini/" target="_blank" rel="noopener noreferrer" className="text-white/15 hover:text-gold transition-colors duration-300"><Instagram size={17} strokeWidth={1.5} /></a>
+            <a href="#" className="text-white/15 hover:text-gold transition-colors duration-300"><Mail size={17} strokeWidth={1.5} /></a>
+            <a href="#" className="text-white/15 hover:text-gold transition-colors duration-300"><MessageSquare size={17} strokeWidth={1.5} /></a>
           </div>
         </div>
       </div>
