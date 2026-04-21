@@ -18,9 +18,7 @@ export const ImageAutoSlider = () => (
       }
       .slider-track {
         animation: slider-scroll 60s linear infinite;
-      }
-      .slider-track:hover {
-        animation-play-state: paused;
+        touch-action: pan-y;
       }
       .slider-mask {
         mask: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
@@ -28,7 +26,7 @@ export const ImageAutoSlider = () => (
       }
     `}</style>
 
-    <div className="slider-mask w-full overflow-hidden">
+    <div className="slider-mask w-full overflow-hidden" style={{ touchAction: 'pan-y' }}>
       <div className="slider-track flex gap-4 w-max items-start">
         {duplicated.map((item, i) => (
           <div key={i} className="flex-shrink-0 flex flex-col gap-2">
