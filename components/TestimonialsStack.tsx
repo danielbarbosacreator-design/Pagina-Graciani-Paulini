@@ -7,7 +7,7 @@ const TESTIMONIALS = [
     designation: "Inteligência Financeira",
     quote: "Aprendi a me relacionar com o dinheiro de uma forma que nunca imaginei. A Graciane tem uma forma única de ensinar que transforma de verdade.",
     src: "/images/Eliane.jpg.jpeg",
-    objectPosition: "center 10%",
+    objectPosition: "center 0%",
   },
   {
     name: "Jaqueline B.",

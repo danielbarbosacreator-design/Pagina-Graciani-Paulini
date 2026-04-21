@@ -85,36 +85,45 @@ const Navbar = () => {
             Começar
           </ShinyButton>
         </div>
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-white/60"><Menu size={22} /></button>
+        <button onClick={() => setOpen(!open)} className="lg:hidden text-white/50 p-1"><Menu size={18} /></button>
       </div>
 
       {open && (
-        <div className="lg:hidden fixed inset-0 bg-[#0A0A0A]/98 backdrop-blur-xl z-[60] flex flex-col items-center justify-center gap-8">
-          <button
+        <>
+          {/* Backdrop com desfoque */}
+          <div
+            className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[59]"
             onClick={() => setOpen(false)}
-            className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors"
-          >
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-              <line x1="3" y1="3" x2="19" y2="19" /><line x1="19" y1="3" x2="3" y2="19" />
-            </svg>
-          </button>
+          />
 
-          <span className="font-serif text-[10px] uppercase tracking-[0.3em] text-gold/40 mb-2">Navegação</span>
-
-          {links.map(l => (
+          {/* Painel direito */}
+          <div className="lg:hidden fixed top-0 right-0 h-full w-64 bg-[#0D0D0D]/98 backdrop-blur-xl border-l border-white/[0.06] z-[60] flex flex-col pt-20 pb-10 px-8 gap-6">
             <button
-              key={l.id}
-              onClick={() => go(l.id)}
-              className="font-serif text-3xl font-medium text-white/75 hover:text-white transition-colors duration-200"
+              onClick={() => setOpen(false)}
+              className="absolute top-5 right-5 text-white/35 hover:text-white transition-colors"
             >
-              {l.label}
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <line x1="3" y1="3" x2="19" y2="19" /><line x1="19" y1="3" x2="3" y2="19" />
+              </svg>
             </button>
-          ))}
 
-          <div className="mt-4">
-            <ShinyButton onClick={() => go('mmp')} className="uppercase tracking-wider">Começar Agora</ShinyButton>
+            <span className="text-[9px] uppercase tracking-[0.3em] text-gold/35 mb-1">Navegação</span>
+
+            {links.map(l => (
+              <button
+                key={l.id}
+                onClick={() => go(l.id)}
+                className="font-serif text-xl font-medium text-white/70 hover:text-white text-left transition-colors duration-200"
+              >
+                {l.label}
+              </button>
+            ))}
+
+            <div className="mt-auto">
+              <ShinyButton onClick={() => go('mmp')} className="uppercase tracking-wider w-full">Começar</ShinyButton>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
