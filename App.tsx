@@ -114,7 +114,8 @@ const Hero = () => {
         <div
           className="max-w-container mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-16 lg:gap-20 items-center relative z-10"
         >
-          <div className="space-y-10 text-center lg:text-left order-2 lg:order-1">
+          {/* Texto topo: badge + título + descrição */}
+          <div className="space-y-10 text-center lg:text-left order-1 lg:order-1">
 
             <div
               className="hero-enter inline-flex items-center gap-2 px-4 py-1.5 border border-gold/15 rounded-full text-[10px] font-semibold uppercase tracking-[0.2em] text-white/50"
@@ -136,7 +137,8 @@ const Hero = () => {
               Aprenda a enxergar novas possibilidades de viver uma vida próspera, transformando sua mente através de pequenas ações práticas no dia a dia.
             </p>
 
-            <div className="hero-enter flex items-end gap-3 justify-center lg:justify-start" style={{ animationDelay: '0.7s' }}>
+            {/* Contagem + botão — apenas desktop */}
+            <div className="hero-enter hidden lg:flex items-end gap-3 justify-start" style={{ animationDelay: '0.7s' }}>
               {[
                 { v: pad(time.days), l: 'DIAS' },
                 { v: pad(time.hours), l: 'HRS' },
@@ -153,7 +155,7 @@ const Hero = () => {
               ))}
             </div>
 
-            <div className="hero-enter" style={{ animationDelay: '0.88s' }}>
+            <div className="hero-enter hidden lg:block" style={{ animationDelay: '0.88s' }}>
               <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
                 Me Inscrever Agora <ArrowRight size={16} />
               </ShinyButton>
@@ -161,7 +163,7 @@ const Hero = () => {
           </div>
 
           <motion.div
-            className="order-1 lg:order-2 relative flex justify-center lg:justify-end"
+            className="order-2 lg:order-2 relative flex justify-center lg:justify-end"
             initial={{ opacity: 0, scale: 0.88, y: 48, filter: "blur(18px)" }}
             animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
@@ -201,6 +203,32 @@ const Hero = () => {
               />
             </div>
           </motion.div>
+
+          {/* Contagem + botão — apenas mobile, aparece após a foto */}
+          <div className="order-3 lg:hidden flex flex-col items-center gap-10">
+            <div className="hero-enter flex items-end gap-3 justify-center" style={{ animationDelay: '0.7s' }}>
+              {[
+                { v: pad(time.days), l: 'DIAS' },
+                { v: pad(time.hours), l: 'HRS' },
+                { v: pad(time.minutes), l: 'MIN' },
+                { v: pad(time.seconds), l: 'SEG' },
+              ].map(({ v, l }, i) => (
+                <React.Fragment key={l}>
+                  <div className="flex flex-col items-center">
+                    <span className="font-serif text-4xl font-medium leading-none gold-text tabular-nums">{v}</span>
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/30 mt-1">{l}</span>
+                  </div>
+                  {i < 3 && <span className="font-serif text-2xl text-gold/40 pb-5">:</span>}
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="hero-enter" style={{ animationDelay: '0.88s' }}>
+              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
+                Me Inscrever Agora <ArrowRight size={16} />
+              </ShinyButton>
+            </div>
+          </div>
+
         </div>
       </section>
     </BeamsBackground>
