@@ -70,7 +70,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0A0A0A]/92 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-white/5 ${scrolled ? 'py-4' : 'py-5'}`}>
       <div className="max-w-container mx-auto px-6 lg:px-8 flex justify-between items-center">
         <button onClick={() => go('hero')} className="font-serif text-xl tracking-[0.15em] font-semibold text-white uppercase">
           Paulini
