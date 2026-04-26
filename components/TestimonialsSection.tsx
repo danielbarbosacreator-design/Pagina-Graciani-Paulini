@@ -26,6 +26,24 @@ const TestimonialsSection: React.FC = () => {
             role: 'Liderança',
             text: 'A mentoria foi muito importante, comecei a organizar áreas da minha vida que nem sabia que existiam. Foi um grande avanço pra mim aprender a dizer não.',
             img: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=600',
+        },
+        {
+            name: 'Nayara Fleith Miranda',
+            role: 'Transformação',
+            text: 'Meu marido disse que valeu todo tempo e investimento dedicado. Houve grande transformação, primeiro em mim e depois na minha casa. Aprendi que não posso mudar as pessoas, nem ter expectativas sobre elas e isso é libertador!',
+            img: '/images/Nayara-v2.jpg',
+        },
+        {
+            name: 'Adriana Beckert',
+            role: 'Liberdade',
+            text: 'Durante esse período, deixei de me esconder atrás dos meus medos e comecei a confiar na minha voz, me posicionando com segurança e clareza diante do que antes eu silenciava. Resumo: Liberdade.',
+            img: '/images/Adriana-v2.jpg',
+        },
+        {
+            name: 'Eliane Correia',
+            role: 'Propósito',
+            text: 'Após a mentoria sei bem o que quero, sei meu valor e meus princípios, antes estava apenas sobrevivendo nesse mundo e agora encontrei meu propósito de vida. Superei meu maior medo da vida, finalizar a CNH e agora tenho autoconfiança para escolher meus clientes.',
+            img: '/images/Eliane-v2.jpg',
         }
     ];
 

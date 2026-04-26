@@ -15,10 +15,22 @@ const TESTIMONIALS = [
     src: "/images/Chandriele.jpg.jpeg",
   },
   {
-    name: "Natiele R.",
-    designation: "Mente Próspera",
-    quote: "O método dela transforma a mentalidade de verdade. Os resultados vieram rápido. Recomendo de olhos fechados para qualquer mulher que queira crescer!",
-    src: "/images/Natiele1.jpg.jpeg",
+    name: "Nayara Fleith Miranda",
+    designation: "Transformação",
+    quote: "Meu marido disse que valeu todo tempo e investimento dedicado. Houve grande transformação, primeiro em mim e depois na minha casa. Aprendi que não posso mudar as pessoas, nem ter expectativas sobre elas e isso é libertador!",
+    src: "/images/Nayara-v2.jpg",
+  },
+  {
+    name: "Adriana Beckert",
+    designation: "Liberdade",
+    quote: "Durante esse período, deixei de me esconder atrás dos meus medos e comecei a confiar na minha voz, me posicionando com segurança e clareza diante do que antes eu silenciava. Resumo: Liberdade.",
+    src: "/images/Adriana-v2.jpg",
+  },
+  {
+    name: "Eliane Correia",
+    designation: "Propósito",
+    quote: "Após a mentoria sei bem o que quero, sei meu valor e meus princípios, antes estava apenas sobrevivendo nesse mundo e agora encontrei meu propósito de vida. Superei meu maior medo da vida, finalizar a CNH e agora tenho autoconfiança para escolher meus clientes.",
+    src: "/images/Eliane-v2.jpg",
   },
 ]
 

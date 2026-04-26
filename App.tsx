@@ -63,10 +63,13 @@ const Navbar = () => {
   };
 
   const links = [
+    { label: 'Início', id: 'hero' },
+    { label: 'MMP', id: 'mmp' },
     { label: 'Raio X', id: 'raiox' },
-    { label: 'Mentoria', id: 'transformamente' },
+    { label: 'Financeiro', id: 'finance' },
+    { label: 'TransformaMente', id: 'transformamente' },
     { label: 'A Mentora', id: 'mentora' },
-    { label: 'Depoimentos', id: 'depoimentos' },
+    { label: 'Imersão', id: 'immersion' },
   ];
 
   return (
@@ -131,11 +134,9 @@ const Navbar = () => {
 
 // ─── HERO ────────────────────────────────────────────────────
 
+const pad = (n: number) => String(n).padStart(2, '0');
+
 const Hero = () => {
-  const time = useCountdown(COUNTDOWN_TARGET);
-  const pad = (n: number) => String(n).padStart(2, '0');
-
-
   return (
     <BeamsBackground intensity="medium" className="bg-[#0A0A0A]">
       <section id="hero" className="relative min-h-screen flex items-center pt-28 pb-20">
@@ -167,29 +168,10 @@ const Hero = () => {
               Aprenda a enxergar novas possibilidades de viver uma vida próspera, transformando sua mente através de pequenas ações práticas no dia a dia.
             </p>
 
-            {/* Botão — apenas desktop */}
             <div className="hero-enter hidden lg:block" style={{ animationDelay: '0.7s' }}>
               <ShinyButton onClick={() => document.getElementById('mentora')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
                 Conhecer a Mentora <ArrowRight size={16} />
               </ShinyButton>
-            </div>
-
-            {/* Contagem — apenas desktop, abaixo do botão */}
-            <div className="hero-enter hidden lg:flex items-end gap-3 justify-start" style={{ animationDelay: '0.88s' }}>
-              {[
-                { v: pad(time.days), l: 'DIAS' },
-                { v: pad(time.hours), l: 'HRS' },
-                { v: pad(time.minutes), l: 'MIN' },
-                { v: pad(time.seconds), l: 'SEG' },
-              ].map(({ v, l }, i) => (
-                <React.Fragment key={l}>
-                  <div className="flex flex-col items-center">
-                    <span className="font-serif text-4xl lg:text-5xl font-medium leading-none gold-text tabular-nums">{v}</span>
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/30 mt-1">{l}</span>
-                  </div>
-                  {i < 3 && <span className="font-serif text-2xl text-gold/40 pb-5">:</span>}
-                </React.Fragment>
-              ))}
             </div>
           </div>
 
@@ -241,22 +223,6 @@ const Hero = () => {
               <ShinyButton onClick={() => document.getElementById('mentora')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
                 Conhecer a Mentora <ArrowRight size={16} />
               </ShinyButton>
-            </div>
-            <div className="hero-enter flex items-end gap-3 justify-center" style={{ animationDelay: '0.88s' }}>
-              {[
-                { v: pad(time.days), l: 'DIAS' },
-                { v: pad(time.hours), l: 'HRS' },
-                { v: pad(time.minutes), l: 'MIN' },
-                { v: pad(time.seconds), l: 'SEG' },
-              ].map(({ v, l }, i) => (
-                <React.Fragment key={l}>
-                  <div className="flex flex-col items-center">
-                    <span className="font-serif text-4xl font-medium leading-none gold-text tabular-nums">{v}</span>
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/30 mt-1">{l}</span>
-                  </div>
-                  {i < 3 && <span className="font-serif text-2xl text-gold/40 pb-5">:</span>}
-                </React.Fragment>
-              ))}
             </div>
           </div>
 
@@ -314,8 +280,8 @@ const MenteProspera = () => (
           </p>
         </div>
 
-        <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
-          Aplicar para Análise <ArrowRight size={16} />
+        <ShinyButton onClick={() => window.open('https://wa.me/5547996504625?text=Olá Graciane, vim do site e gostaria de agendar uma conversa inicial para o Raio X.', '_blank')} className="uppercase tracking-[0.1em]">
+          Agendar Conversa Inicial <ArrowRight size={16} />
         </ShinyButton>
       </div>
     </div>
@@ -337,9 +303,14 @@ const RaioX = () => (
             <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.5rem)] font-medium leading-[1.05] mb-6">
               Raio X da<br /><ShinyText>Realidade</ShinyText>
             </h2>
-            <p className="text-white/45 text-[15px] leading-[1.85] font-light mb-10">
+            <p className="text-white/45 text-[15px] leading-[1.85] font-light mb-6">
               Um encontro exclusivo para uma análise profunda da sua situação atual, com direção clara e alinhada às suas prioridades nesta fase da sua vida.
             </p>
+            <div className="bg-gold/5 border border-gold/10 rounded-xl p-6 mb-10">
+              <p className="text-[13px] text-gold/80 italic font-light leading-relaxed">
+                "Não aceito qualquer cliente. Antes de iniciarmos, teremos um encontro gratuito para alinhar expectativas e realidade. Quero te conhecer melhor e garantir que este é o momento certo para você."
+              </p>
+            </div>
             <div className="space-y-4 mb-12">
               {[
                 'Análise do momento atual',
@@ -353,8 +324,11 @@ const RaioX = () => (
                 </div>
               ))}
             </div>
-            <ShinyButton className="uppercase tracking-[0.1em]">
-              Aplicar para Análise <ArrowRight size={16} />
+            <ShinyButton 
+              onClick={() => window.open('https://wa.me/5547996504625?text=Olá Graciane, gostaria de agendar meu encontro gratuito para alinhar expectativas sobre o Raio X.', '_blank')}
+              className="uppercase tracking-[0.1em]"
+            >
+              Agendar Encontro Gratuito <ArrowRight size={16} />
             </ShinyButton>
           </div>
 
@@ -389,11 +363,16 @@ const Finance = () => (
         <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05] mb-6">
           Inteligência<br /><ShinyText>Financeira</ShinyText>
         </h2>
-        <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10 max-w-2xl">
+        <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-8 max-w-2xl">
           <p className="font-serif italic text-lg text-white/50 leading-relaxed">
             "Não é sobre quanto você ganha, mas como gerencia e a mentalidade que constrói."
           </p>
         </blockquote>
+        <div className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-7 mb-10 max-w-2xl group hover:border-gold/15 transition-all">
+          <p className="text-[14px] text-white/50 font-light leading-[1.8]">
+            Para garantir a entrega e o resultado, realizo uma <span className="text-gold font-medium">entrevista prévia</span> com cada mentorada. Quero entender seus desafios atuais antes de alinharmos o início da mentoria.
+          </p>
+        </div>
         <div className="inline-flex items-center gap-4 mb-12">
           <span className="font-serif text-5xl font-medium leading-none gold-text">5</span>
           <div>
@@ -418,8 +397,11 @@ const Finance = () => (
           ))}
         </div>
 
-        <ShinyButton className="uppercase tracking-[0.1em]">
-          Quero Marcar Minha Mentoria <ArrowRight size={16} />
+        <ShinyButton 
+          onClick={() => window.open('https://wa.me/5547996504625?text=Olá Graciane, quero agilizar minha entrevista para a Mentoria de Inteligência Financeira.', '_blank')}
+          className="uppercase tracking-[0.1em]"
+        >
+          Agendar Entrevista <MessageSquare size={16} className="ml-2" />
         </ShinyButton>
       </div>
     </div>
@@ -437,48 +419,73 @@ const TransformaMente = () => (
     <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
       <div className="max-w-4xl mx-auto">
         <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Inscrições Abertas · 8 Encontros</span>
-        <h2 className="font-serif text-[clamp(2.6rem,6.5vw,5.25rem)] font-medium leading-[1.05] mb-6">
+        <h2 className="font-serif text-[clamp(2.6rem,6.5vw,5.25rem)] font-medium leading-[1.05] mb-8">
           Mentoria<br /><ShinyText>TransformaMente</ShinyText>
         </h2>
-        <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10 max-w-2xl">
-          <p className="font-serif italic text-base text-white/50 leading-relaxed">
-            "A gente só se cura quando se conhece."
-          </p>
-        </blockquote>
-        <p className="text-white/40 text-[15px] font-light leading-[1.8] mb-10 max-w-xl">
-          Um processo para sair do piloto automático e viver com consciência, identidade e direção.
-        </p>
-        <div className="space-y-4 mb-14">
-          {[
-            '8 encontros presenciais ou online',
-            'Encerramento com palestra e café',
-            'Inclui relatório completo de perfil com 50 páginas',
-          ].map((t, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <CheckCircle2 size={14} className="text-gold/50 flex-shrink-0" strokeWidth={2} />
-              <span className="text-[13px] text-white/50 font-light">{t}</span>
+        
+        <div className="space-y-12 mb-16">
+          <div className="max-w-3xl">
+            <p className="text-white/80 text-lg lg:text-xl font-serif italic leading-relaxed mb-8">
+              "Se você sente que está apenas sobrevivendo, sem clareza de quem realmente é, do que quer ou de como avançar… essa mentoria é um convite para voltar para si mesma — com direção, consciência e propósito."
+            </p>
+            <div className="space-y-6 text-white/45 text-[15px] font-light leading-[1.8]">
+              <p>
+                A <span className="text-gold/80 font-medium italic font-serif">TransformaMente</span> é uma jornada individual e profunda, onde cada encontro é pensado para destravar emoções, alinhar sua identidade e fortalecer seu posicionamento diante da vida.
+              </p>
+              <p>
+                Ao longo dos encontros, você não apenas se entende — <span className="text-white/70 font-medium">você se reposiciona</span>.
+              </p>
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className="mb-16">
-          <TransformaMentePricing />
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { 
+                t: '7 Encontros Individuais', 
+                d: 'Presenciais ou online, conduzidos de forma personalizada, respeitando sua história, seu momento e seus objetivos.' 
+              },
+              { 
+                t: '1 Encontro em Grupo', 
+                d: 'Uma experiência com palestra e café entre mentoradas, para conexão, troca e expansão.' 
+              },
+              { 
+                t: 'Relatório Completo', 
+                d: 'Análise de Perfil Comportamental (50 páginas), revelando padrões, forças e pontos de desenvolvimento.' 
+              }
+            ].map((item, i) => (
+              <div key={i} className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-7 hover:border-gold/20 transition-all duration-300">
+                <CheckCircle2 size={18} className="text-gold/60 mb-4" strokeWidth={1.5} />
+                <h4 className="text-[13px] font-semibold text-white/80 uppercase tracking-wider mb-3">{item.t}</h4>
+                <p className="text-[13px] text-white/35 font-light leading-relaxed">{item.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-gold/5 border border-gold/10 rounded-2xl p-10 text-center max-w-3xl mx-auto">
+            <p className="text-white/60 text-base font-light mb-4">
+              Essa não é apenas uma mentoria. É um processo de transformação interna que reflete em todas as áreas da sua vida.
+            </p>
+            <p className="text-gold font-serif italic text-lg">
+              “Para mulheres que estão prontas para se posicionar e viver um novo nível de clareza e direção.”
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center gap-4 mb-10">
           <div className="w-8 h-[1px] bg-gradient-to-r from-gold/40 to-transparent" />
-          <span className="text-[10px] text-white/25 font-semibold uppercase tracking-[0.2em]">Os 8 Pilares</span>
+          <span className="text-[10px] text-white/25 font-semibold uppercase tracking-[0.2em]">A Jornada da Transformação</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
           {[
-            { n: '01', t: 'Perfil Natural e Adaptado', d: 'Sua essência x o que você se tornou para agradar.' },
-            { n: '02', t: 'Potencialidades e Valores', d: 'O que te move e seus motivadores reais.' },
-            { n: '03', t: 'Bloqueios Emocionais', d: 'Medos e travas que impedem seu crescimento.' },
-            { n: '04', t: 'Tipos Psicológicos', d: 'Sua forma de perceber e se relacionar com o mundo.' },
-            { n: '05', t: 'Quadro dos Sonhos', d: 'Integridade, honra e gratidão como base.' },
-            { n: '06', t: 'Raio X Financeiro', d: 'Sua relação com dinheiro espelha sua vida íntima.' },
-            { n: '07', t: 'Princípios da Riqueza', d: 'Dinheiro, prosperidade e transbordo real.' },
-            { n: '08', t: 'Expectativa x Disposição', d: 'Encerramento com palestra e café.' },
+            { n: '01', t: 'Perfil Natural e Adaptado', d: 'Descubra sua essência real vs o que você se tornou por pressão.' },
+            { n: '02', t: 'Potencialidades e Valores', d: 'Identifique seus verdadeiros motivadores e pontos cegos.' },
+            { n: '03', t: 'Bloqueios Emocionais', d: 'Acesse e ressignifique as travas que impedem seu crescimento.' },
+            { n: '04', t: 'Tipos Psicológicos', d: 'Domine sua forma de perceber e interagir com o mundo à sua volta.' },
+            { n: '05', t: 'Quadro dos Sonhos', d: 'Construa sua visão de futuro baseada em integridade e honra.' },
+            { n: '06', t: 'Raio X Financeiro', d: 'Entenda como sua relação com dinheiro espelha seu interior.' },
+            { n: '07', t: 'Princípios da Riqueza', d: 'Aprenda as leis espirituais e naturais para o verdadeiro fluxo.' },
+            { n: '08', t: 'Posicionamento X Futuro', d: 'Direcionamento final para transbordar em todas as áreas.' },
           ].map((p, i) => (
             <div key={i} className="card-lift bg-white/[0.02] border border-white/[0.04] rounded-xl p-6 group hover:border-gold/15 hover:bg-white/[0.04] transition-all duration-500">
               <span className="font-serif text-2xl font-light text-white/[0.05] group-hover:text-gold/20 transition-colors block mb-3 leading-none">{p.n}</span>
@@ -486,6 +493,14 @@ const TransformaMente = () => (
               <p className="text-[12px] text-white/30 font-light leading-[1.7]">{p.d}</p>
             </div>
           ))}
+        </div>
+
+        <div className="pt-10 border-t border-white/[0.04]">
+          <div className="text-center mb-12">
+            <h3 className="font-serif text-2xl text-white/80 mb-2">Pronta para o seu novo capítulo?</h3>
+            <p className="text-white/20 text-[13px] uppercase tracking-widest font-light">Garanta sua vaga na próxima turma</p>
+          </div>
+          <TransformaMentePricing />
         </div>
       </div>
     </div>
@@ -540,7 +555,7 @@ const Testimonials = () => (
       <div className="max-w-container mx-auto px-6 lg:px-8 pb-10">
         <div className="flex flex-col items-center gap-3">
           <div className="flex gap-1">{[1,2,3,4,5].map(i => <Star key={i} size={13} fill="#C5A059" color="#C5A059" />)}</div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-white/20 font-medium">+10.000 atendimentos realizados</p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-white/20 font-medium text-center">Mais de 1.000 mulheres impactadas em mentorias, treinamentos e experiências</p>
         </div>
       </div>
     </div>
@@ -571,9 +586,9 @@ const Mentora = () => (
 
         <div>
           <div className="flex items-center gap-4 mb-8">
-            <span className="font-serif text-4xl font-light gold-text leading-none">+10k</span>
+            <span className="font-serif text-4xl font-light gold-text leading-none">+200</span>
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">Atendimentos Reais</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">Mentoradas individuais e pequenos grupos</p>
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/50">Propósito & Destino</p>
             </div>
           </div>
@@ -593,7 +608,8 @@ const Mentora = () => (
 
           <blockquote className="border-l-[2px] border-gold/40 pl-6 mb-10">
             <p className="font-serif italic text-lg text-white/50 leading-relaxed">
-              "Prosperidade é consequência do autoconhecimento e do seu posicionamento na vida."
+              "Prosperidade é sabedoria, saúde e paz na alma.<br />
+              E o autoconhecimento é o caminho que te leva até ela."
             </p>
           </blockquote>
 
@@ -618,41 +634,71 @@ const Mentora = () => (
 
 // ─── IMERSÃO ─────────────────────────────────────────────────
 
-const Immersion = () => (
-  <section className="relative py-20 lg:py-32 mesh-cool overflow-hidden">
-    <div className="glow-gold" style={{ bottom: '-100px', left: '30%' }} />
+const Immersion = () => {
+  const time = useCountdown(COUNTDOWN_TARGET);
 
-    <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Agenda de Eventos</span>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 mb-4">Próxima Imersão</p>
-          <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05]">
-            Imersão Especial<br /><ShinyText>30 de Maio</ShinyText>
-          </h2>
-        </div>
+  return (
+    <section className="relative py-20 lg:py-32 mesh-cool overflow-hidden">
+      <div className="glow-gold" style={{ bottom: '-100px', left: '30%' }} />
 
-        <div className="bg-white/[0.02] backdrop-blur-sm border border-white/[0.04] rounded-2xl p-10 lg:p-16 relative overflow-hidden hover:border-gold/15 transition-all duration-500">
-          <div className="absolute top-8 right-8 opacity-[0.02] pointer-events-none"><Calendar size={140} strokeWidth={0.5} /></div>
+      <div className="max-w-container mx-auto px-6 lg:px-8 reveal relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-gold text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 block">Agenda de Eventos</span>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25 mb-4">Próxima Imersão</p>
+            <h2 className="font-serif text-[clamp(2.6rem,6.5vw,4.8rem)] font-medium leading-[1.05] mb-8">
+              Imersão Especial<br /><ShinyText>30 de Maio</ShinyText>
+            </h2>
 
-          {/* Conteúdo centralizado */}
-          <div className="flex flex-col items-center text-center relative z-10">
+            {/* Countdown no Evento */}
+            <div className="flex items-end gap-3 justify-center mt-8">
+              {[
+                { v: pad(time.days), l: 'DIAS' },
+                { v: pad(time.hours), l: 'HRS' },
+                { v: pad(time.minutes), l: 'MIN' },
+                { v: pad(time.seconds), l: 'SEG' },
+              ].map(({ v, l }, i) => (
+                <React.Fragment key={l}>
+                  <div className="flex flex-col items-center">
+                    <span className="font-serif text-4xl lg:text-5xl font-medium leading-none gold-text tabular-nums">{v}</span>
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/30 mt-1">{l}</span>
+                  </div>
+                  {i < 3 && <span className="font-serif text-2xl text-gold/40 pb-5">:</span>}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+        <div className="bg-white/[0.02] backdrop-blur-sm border border-white/[0.04] rounded-2xl relative overflow-hidden hover:border-gold/15 transition-all duration-500">
+          <div className="absolute top-8 right-8 opacity-[0.02] pointer-events-none z-0"><Calendar size={140} strokeWidth={0.5} /></div>
+          
+          {/* Imagem de Treinamento */}
+          <div className="relative w-full h-[300px] lg:h-[450px] overflow-hidden">
+            <img 
+              src="/images/imersao-v2.jpg" 
+              alt="Treinamento e Imersão" 
+              className="w-full h-full object-cover brightness-[0.8] contrast-[1.1]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
+          </div>
+
+          <div className="p-10 lg:p-16 pt-6 lg:pt-8 flex flex-col items-center text-center relative z-10">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/60">Evento Presencial · 30 de Maio de 2026</span>
             </div>
-            <h3 className="font-serif text-2xl font-medium text-white/90 mb-4">Imersão Especial</h3>
-            <p className="text-[15px] text-white/40 font-light leading-[1.85] mb-10 max-w-lg">
-              Um dia completo de transformação de mentalidade. Para mulheres prontas para dar o próximo passo.
+            <h3 className="font-serif text-3xl font-medium text-white/90 mb-4">Imersão Especial</h3>
+            <p className="text-[15px] text-white/50 font-light leading-[1.85] mb-10 max-w-lg">
+              Um dia completo de transformação de mentalidade e inteligência emocional. Uma experiência presencial exclusiva para mulheres prontas para o próximo nível.
             </p>
 
             {/* Detalhes do evento */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 w-full max-w-xl">
               {[
-                { icon: <Clock size={13} strokeWidth={1.5} />, label: 'Horário', value: '09h às 18h', gold: false },
+                { icon: <Clock size={13} strokeWidth={1.5} />, label: 'Horário', value: '14h às 18h', gold: false },
                 { icon: <MapPin size={13} strokeWidth={1.5} />, label: 'Local', value: 'A Revelar', gold: false },
                 { icon: <Award size={13} strokeWidth={1.5} />, label: 'Vagas', value: 'Apenas 30', gold: true },
-                { icon: <Target size={13} strokeWidth={1.5} />, label: 'Formato', value: 'Full Day', gold: false },
+                { icon: <Target size={13} strokeWidth={1.5} />, label: 'Formato', value: 'Treinamento', gold: false },
               ].map((item, i) => (
                 <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-lg p-4 flex flex-col items-center gap-1.5">
                   <span className="text-gold/50">{item.icon}</span>
@@ -681,7 +727,10 @@ const Immersion = () => (
           </div>
 
           <div className="mt-12 pt-10 border-t border-white/[0.04] flex flex-col items-center gap-5">
-            <ShinyButton className="uppercase tracking-[0.1em]">
+            <ShinyButton 
+              onClick={() => window.open('https://chat.whatsapp.com/H4eksvyBAL4B7cW0j3OlK6?mode=gi_t', '_blank')}
+              className="uppercase tracking-[0.1em]"
+            >
               Entrar na Lista de Espera <ArrowRight size={16} />
             </ShinyButton>
             <span className="flex items-center gap-2 text-[9px] text-white/20 font-medium uppercase tracking-wider">
@@ -708,20 +757,18 @@ const Footer = () => (
         </div>
         <div>
           <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-5">Navegação</h4>
-          <ul className="space-y-3 text-[12px] text-white/40 font-light">
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-3 text-[11px] text-white/35 font-light">
             <li><a href="#hero" className="hover:text-gold transition-colors">Início</a></li>
-            <li><a href="#raiox" className="hover:text-gold transition-colors">Raio X</a></li>
             <li><a href="#mmp" className="hover:text-gold transition-colors">Mentoria MMP</a></li>
+            <li><a href="#raiox" className="hover:text-gold transition-colors">Raio X</a></li>
+            <li><a href="#finance" className="hover:text-gold transition-colors">Inteligência Financeira</a></li>
+            <li><a href="#transformamente" className="hover:text-gold transition-colors">TransformaMente</a></li>
             <li><a href="#mentora" className="hover:text-gold transition-colors">A Mentora</a></li>
+            <li><a href="#immersion" className="hover:text-gold transition-colors">Evento – Imersão</a></li>
           </ul>
         </div>
         <div>
-          <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-5">Pagamento Seguro</h4>
-          <div className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-5 mb-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25 mb-1">Chave Pix CNPJ</p>
-            <p className="text-[13px] font-mono text-gold/70">58.982.139/0001-168</p>
-            <p className="text-[11px] text-white/25 mt-1">Nubank · Graciane Paulini</p>
-          </div>
+          <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-5">Redes Sociais</h4>
           <div className="flex gap-5">
             <a href="https://www.instagram.com/gracianepaulini/" target="_blank" rel="noopener noreferrer" className="text-white/15 hover:text-gold transition-colors duration-300"><Instagram size={17} strokeWidth={1.5} /></a>
             <a href="#" className="text-white/15 hover:text-gold transition-colors duration-300"><Mail size={17} strokeWidth={1.5} /></a>

@@ -40,8 +40,8 @@ const MainFooter: React.FC = () => {
                         </ul>
                      </div>
                      <div className="col-span-2 flex flex-col items-end text-right">
-                        <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-6">CNPJ</h4>
-                        <code className="text-[11px] font-normal text-white/35 select-all bg-white/[0.03] px-5 py-2.5 border border-white/5">58.982.139/0001-168</code>
+                        <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/15 mb-6">Atendimento</h4>
+                        <span className="text-[11px] font-normal text-white/35">Graciane Paulini · Mentoria Premium</span>
                      </div>
                 </div>
 

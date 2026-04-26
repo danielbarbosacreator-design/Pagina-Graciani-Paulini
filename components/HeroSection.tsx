@@ -26,10 +26,10 @@ const HeroSection: React.FC = () => {
 
                     <div className="flex flex-col sm:flex-row items-start gap-6 pt-4">
                         <button
-                            onClick={() => document.getElementById(Section.MMP)?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={() => document.getElementById(Section.ABOUT)?.scrollIntoView({ behavior: 'smooth' })}
                             className="btn-premium"
                         >
-                            ME INSCREVER AGORA <ArrowRight size={16} />
+                            CONHECER A MENTORA <ArrowRight size={16} />
                         </button>
                         <div className="flex items-center gap-2.5 text-[9px] font-semibold text-white/30 uppercase tracking-[0.15em] pt-4">
                             <ShieldCheck size={14} className="text-[#CFAE6B]" strokeWidth={1.5} /> Vagas limitadas

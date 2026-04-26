@@ -2,27 +2,11 @@ import React, { useState } from 'react';
 import { ArrowRight, Check, CreditCard, Smartphone, ShieldCheck, Zap, Lock, RefreshCcw, Copy, CheckCheck } from 'lucide-react';
 import { ShinyButton } from './shiny-button';
 
-const PIX_KEY = '58.982.139/0001-168';
-
 function PixCopyButton() {
-  const [copied, setCopied] = useState(false);
-  const copy = () => {
-    navigator.clipboard.writeText(PIX_KEY);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
   return (
-    <button
-      onClick={copy}
-      className="flex items-center gap-1.5 mt-1 group"
-      title="Copiar chave Pix"
-    >
-      <span className="text-[10px] text-gold/50 font-mono">{PIX_KEY}</span>
-      {copied
-        ? <CheckCheck size={13} className="text-gold/80" />
-        : <Copy size={13} className="text-white/20 group-hover:text-gold/50 transition-colors" />
-      }
-    </button>
+    <div className="flex items-center gap-1.5 mt-1">
+      <span className="text-[10px] text-white/40 tracking-wider uppercase">Disponível via Pix e Boleto</span>
+    </div>
   );
 }
 
