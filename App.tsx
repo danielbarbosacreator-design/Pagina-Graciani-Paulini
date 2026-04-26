@@ -169,8 +169,8 @@ const Hero = () => {
 
             {/* Botão — apenas desktop */}
             <div className="hero-enter hidden lg:block" style={{ animationDelay: '0.7s' }}>
-              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
-                Me Inscrever Agora <ArrowRight size={16} />
+              <ShinyButton onClick={() => document.getElementById('mentora')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
+                Conhecer a Mentora <ArrowRight size={16} />
               </ShinyButton>
             </div>
 
@@ -238,8 +238,8 @@ const Hero = () => {
           {/* Botão + contagem — apenas mobile, aparece após a foto */}
           <div className="order-3 lg:hidden flex flex-col items-center gap-10">
             <div className="hero-enter" style={{ animationDelay: '0.7s' }}>
-              <ShinyButton onClick={() => document.getElementById('raiox')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
-                Me Inscrever Agora <ArrowRight size={16} />
+              <ShinyButton onClick={() => document.getElementById('mentora')?.scrollIntoView({ behavior: 'smooth' })} className="uppercase tracking-[0.1em]">
+                Conhecer a Mentora <ArrowRight size={16} />
               </ShinyButton>
             </div>
             <div className="hero-enter flex items-end gap-3 justify-center" style={{ animationDelay: '0.88s' }}>
