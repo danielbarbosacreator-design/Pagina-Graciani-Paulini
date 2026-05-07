@@ -17,7 +17,7 @@ import { TestimonialsStack } from './components/TestimonialsStack';
 
 /* ============================================================
    GRACIANE PAULINI — LANDING PAGE PREMIUM
-   ============================================================ */
+   ================================================
 
 const COUNTDOWN_TARGET = new Date('2026-05-30T09:00:00');
 
