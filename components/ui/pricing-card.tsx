@@ -5,7 +5,7 @@ import { ShinyButton } from './shiny-button';
 function PixCopyButton() {
   return (
     <div className="flex items-center gap-1.5 mt-1">
-      <span className="text-[10px] text-white/40 tracking-wider uppercase">Disponível via Pix e Boleto</span>
+      <span className="text-[10px] text-white/40 tracking-wider uppercase">Disponível via Pix</span>
     </div>
   );
 }

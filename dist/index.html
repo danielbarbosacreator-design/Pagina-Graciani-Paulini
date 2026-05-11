@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Graciane Paulini, Mentora de Inteligência Emocional e Financeira. Transformação pessoal com clareza, consciência e direção prática." />
+  <title>Graciane Paulini | Mentora de Inteligência Emocional e Financeira</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'base-950': '#0A0A0A',
+            'base-900': '#111111',
+            'base-850': '#161616',
+            'base-800': '#1C1C1C',
+            'base-700': '#252525',
+            'gold': {
+              dark:    '#937841',
+              DEFAULT: '#C5A059',
+              light:   '#E0C882',
+              pale:    '#F0E4C4',
+            },
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:  ['"Poppins"', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: { 'container': '1120px' },
+          animation: {
+            'x-slider': 'x-slider 40s linear infinite',
+          },
+          keyframes: {
+            'x-slider': {
+              '0%':   { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(calc(-50% - 1.25rem))' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      background: #0A0A0A;
+      color: #FFFFFF;
+      font-family: 'Poppins', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* GPU layer promotion para elementos fixos */
+    nav { will-change: transform; transform: translateZ(0); }
+
+    /* Evitar repaint em hover de links */
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    /* Contain layout em seções para evitar reflow */
+    section {
+      contain: layout style;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 600px;
+    }
+
+    /* Primeira seção visível não usa content-visibility */
+    #hero { content-visibility: visible; }
+
+    /* Imagens lazy */
+    img { content-visibility: auto; }
+
+    ::selection {
+      background: rgba(197, 160, 89, 0.3);
+      color: white;
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, #C5A059 0%, #E8D5A3 40%, #C5A059 60%, #937841 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gold-border {
+      border-image: linear-gradient(135deg, #937841, #E0C882, #C5A059) 1;
+    }
+
+    /* ── ShinyButton ───────────────────────────────────────── */
+    @property --gradient-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @property --gradient-angle-offset {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @property --gradient-percent {
+      syntax: "<percentage>";
+      initial-value: 5%;
+      inherits: false;
+    }
+    @property --gradient-shine {
+      syntax: "<color>";
+      initial-value: white;
+      inherits: false;
+    }
+
+    .shiny-cta {
+      --shiny-cta-bg: #080602;
+      --shiny-cta-bg-subtle: #1a1408;
+      --shiny-cta-fg: #ffffff;
+      --shiny-cta-highlight: #C5A059;
+      --shiny-cta-highlight-subtle: #E0C882;
+      --animation: gradient-angle linear infinite;
+      --duration: 3s;
+      --shadow-size: 2px;
+      --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+      --padding-x: 2.5rem;
+      --padding-y: 1rem;
+      --font-size: 0.8125rem;
+
+      isolation: isolate;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      outline-offset: 4px;
+      padding: var(--padding-y) var(--padding-x);
+      font-family: "Poppins", sans-serif;
+      font-size: var(--font-size);
+      line-height: 1.2;
+      font-weight: 600;
+      border: 1px solid transparent;
+      border-radius: 360px;
+      color: var(--shiny-cta-fg);
+      background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
+        conic-gradient(
+          from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+          transparent,
+          var(--shiny-cta-highlight) var(--gradient-percent),
+          var(--gradient-shine) calc(var(--gradient-percent) * 2),
+          var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+          transparent calc(var(--gradient-percent) * 4)
+        ) border-box;
+      box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+      transition: var(--transition);
+      transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+    }
+
+    .shiny-cta::before,
+    .shiny-cta::after,
+    .shiny-cta span::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      inset-inline-start: 50%;
+      inset-block-start: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+    }
+
+    .shiny-cta:active { translate: 0 1px; }
+
+    .shiny-cta::before {
+      --size: calc(100% - var(--shadow-size) * 3);
+      --position: 2px;
+      --space: calc(var(--position) * 2);
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(
+        circle at var(--position) var(--position),
+        white calc(var(--position) / 4),
+        transparent 0
+      ) padding-box;
+      background-size: var(--space) var(--space);
+      background-repeat: space;
+      mask-image: conic-gradient(
+        from calc(var(--gradient-angle) + 45deg),
+        black,
+        transparent 10% 90%,
+        black
+      );
+      border-radius: inherit;
+      opacity: 0.4;
+      z-index: -1;
+    }
+
+    .shiny-cta::after {
+      --animation: shimmer linear infinite;
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(-50deg, transparent, var(--shiny-cta-highlight), transparent);
+      mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+      opacity: 0.6;
+    }
+
+    .shiny-cta span { z-index: 1; }
+
+    .shiny-cta span::before {
+      --size: calc(100% + 1rem);
+      width: var(--size);
+      height: var(--size);
+      box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight);
+      opacity: 0;
+      transition: opacity var(--transition);
+      animation: calc(var(--duration) * 1.5) breathe linear infinite;
+    }
+
+    .shiny-cta,
+    .shiny-cta::before,
+    .shiny-cta::after {
+      animation: var(--animation) var(--duration),
+        var(--animation) calc(var(--duration) / 0.4) reverse paused;
+      animation-composition: add;
+    }
+
+    .shiny-cta:is(:hover, :focus-visible) {
+      --gradient-percent: 20%;
+      --gradient-angle-offset: 95deg;
+      --gradient-shine: var(--shiny-cta-highlight-subtle);
+    }
+
+    .shiny-cta:is(:hover, :focus-visible),
+    .shiny-cta:is(:hover, :focus-visible)::before,
+    .shiny-cta:is(:hover, :focus-visible)::after {
+      animation-play-state: running;
+    }
+
+    .shiny-cta:is(:hover, :focus-visible) span::before { opacity: 1; }
+
+    @keyframes gradient-angle { to { --gradient-angle: 360deg; } }
+    @keyframes shimmer { to { rotate: 360deg; } }
+    @keyframes breathe {
+      from, to { scale: 1; }
+      50% { scale: 1.2; }
+    }
+
+    /* Section backgrounds */
+    .bg-warm     { background: #100E0B; }
+    .bg-cool     { background: #0C0B10; }
+    .bg-deep     { background: #0A0A0A; }
+    .bg-elevated { background: #131210; }
+
+    /* Ambient light orbs — tamanho e blur reduzidos para performance */
+    .glow-gold {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(197,160,89,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+      will-change: auto;
+      transform: translateZ(0);
+    }
+    .glow-warm {
+      position: absolute;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(180,120,60,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(50px);
+      will-change: auto;
+      transform: translateZ(0);
+    }
+
+    /* Light beam */
+    .light-beam {
+      position: absolute;
+      width: 160px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(197,160,89,0.03) 50%, transparent 100%);
+      transform: rotate(-15deg) translateX(-50%) translateZ(0);
+      pointer-events: none;
+      filter: blur(30px);
+    }
+
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(197,160,89,0.20) 50%, transparent 100%);
+    }
+
+    /* Mesh backgrounds */
+    .mesh-warm {
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(197,160,89,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(180,120,60,0.04) 0%, transparent 50%),
+        #100E0B;
+    }
+    .mesh-cool {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(197,160,89,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(147,120,65,0.03) 0%, transparent 50%),
+        #0C0B10;
+    }
+
+    /* ── Hero Aurora ──────────────────────────────────────────── */
+    /* Animate only transform → GPU compositing, sem pixelação    */
+    @keyframes aurora-drift-1 {
+      0%,100% { transform: translate(0%,    0%)   scale(1);    }
+      25%     { transform: translate(5%,   -7%)   scale(1.08); }
+      55%     { transform: translate(-4%,   5%)   scale(0.95); }
+      80%     { transform: translate(2%,   -3%)   scale(1.04); }
+    }
+    @keyframes aurora-drift-2 {
+      0%,100% { transform: translate(0%,    0%)   scale(1);    }
+      35%     { transform: translate(-6%,   4%)   scale(1.10); }
+      70%     { transform: translate(4%,   -4%)   scale(0.93); }
+    }
+    @keyframes aurora-drift-3 {
+      0%,100% { transform: translate(0%,   0%)   scale(1);    }
+      50%     { transform: translate(3%,   6%)   scale(1.13); }
+    }
+    @keyframes aurora-pulse {
+      0%,100% { opacity: .22; }
+      50%     { opacity: .40; }
+    }
+
+    /* ── Hero entrance animations ───────────────────────────── */
+    @keyframes hero-fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .hero-enter {
+      opacity: 0;
+      animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-aurora-1 {
+      position: absolute;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle at center,
+        rgba(197,160,89,0.35) 0%,
+        rgba(197,160,89,0.10) 40%,
+        transparent 70%);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      animation: aurora-drift-1 28s ease-in-out infinite;
+    }
+    .hero-aurora-2 {
+      position: absolute;
+      width: 650px; height: 650px;
+      background: radial-gradient(circle at center,
+        rgba(224,200,130,0.28) 0%,
+        rgba(147,120,65,0.08) 45%,
+        transparent 70%);
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      animation: aurora-drift-2 35s ease-in-out infinite;
+    }
+    .hero-aurora-3 {
+      position: absolute;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle at center,
+        rgba(240,228,196,0.25) 0%,
+        rgba(197,160,89,0.07) 50%,
+        transparent 70%);
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      animation: aurora-drift-3 22s ease-in-out infinite;
+    }
+    .hero-aurora-sweep {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 55% at 62% 38%, rgba(197,160,89,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 70% at 18% 72%, rgba(147,120,65,0.06) 0%, transparent 65%);
+      pointer-events: none;
+      animation: aurora-pulse 16s ease-in-out infinite;
+    }
+
+    /* Mobile: desativar auroras pesadas */
+    @media (max-width: 768px) {
+      .hero-aurora-1, .hero-aurora-2 { display: none; }
+      .hero-aurora-3 {
+        width: 320px; height: 320px;
+        filter: blur(50px);
+        animation: none;
+      }
+    }
+
+    /* ── Scroll reveal — GPU only (opacity + transform) ────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      will-change: auto;
+    }
+
+    /* ── Card hover lift — apenas transform e box-shadow ───── */
+    .card-lift {
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.22s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-3px) translateZ(0);
+      box-shadow: 0 8px 24px -6px rgba(197,160,89,0.10);
+    }
+
+    /* ── Button scale on hover ──────────────────────────────── */
+    .shiny-cta {
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                  var(--transition) !important;
+    }
+    .shiny-cta:hover { transform: scale(1.025) translateZ(0); }
+    .shiny-cta:active { transform: scale(0.98) translateY(1px); }
+
+    /* ── Title fade-in ──────────────────────────────────────── */
+    @keyframes title-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .title-animate {
+      opacity: 0;
+      animation: title-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Mobile: simplificar animações */
+    @media (max-width: 768px) {
+      .reveal {
+        transform: translateY(10px);
+        transition-duration: 0.35s;
+      }
+      .card-lift:hover { transform: none; box-shadow: none; }
+      .glow-gold, .glow-warm, .light-beam { display: none; }
+    }
+
+    /* Reduzir movimento para quem prefere */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .hero-enter, .title-animate {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-CZ-wClXO.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
